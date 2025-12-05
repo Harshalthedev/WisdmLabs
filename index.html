@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: #d8dce1;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            width: 1920px; 
+            height: 92px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #043873;
+            padding: 16px 220px;
+        }
+
+        .header-logo {
+            display: flex;
+            width: 191px;
+            height: 34px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-logo img {
+            width: 37px;
+            height: 29px;
+        }
+        .header-logo p {
+            width: 144px;
+            height: 34px;
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 28px;
+            font-family: inter;
+        }
+
+        .header-logo img {
+            height: 24px;
+        }
+
+        .nav-bar {
+            width: 988.5px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            justify-content: space-between;
+        }
+
+        .header-items {
+            display: flex;
+            gap: 32px;
+            width: 551.5px;
+            height: 24px;
+            /* align-items: center; */
+        }
+
+        .header-items-inner {
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            gap: 10px;
+            width: 177px;
+            height: 24px;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .header-items-inner img {
+            width: 29px;
+            height: 24px;
+        }
+
+        .header-buttons {
+            display: flex;
+            width: 377px;
+            height: 60px;
+            gap: 24px;
+        }
+
+        .login-button {
+            background-color: #FFE492;
+            text-align: center;
+            border-radius: 8px;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            padding: 16px 40px;
+            border: none;
+        }
+        .whitepace-button {
+            border: none;
+            display: flex;
+            width: 227px;
+            height: 60px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+            border-radius: 8px;;
+            background-color: #4F9CF9;
+            padding: 16px 24px;
+
+        }
+        .whitepace-button img {
+            max-width: 10px;
+            max-height: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+
+        <div class="header-logo">
+            <img src="./images/headerLogo.svg" alt="logo">
+            <p>whitepace</p>
+        </div>
+
+        <div class="nav-bar">
+
+            <div class="header-items">
+                <div class="header-items-inner" style="width: 117px; height: 24px;">
+                    <p>Products</p><img src="./images/Down-Arrow.svg">
+                </div>
+                <div class="header-items-inner" style="width: 118px; height: 24px;">
+                    <p>Solutions</p><img src="./images/Down-Arrow.svg">
+                </div>
+                <div class="header-items-inner" style="width: 128px; height: 24px;">
+                    <p>Resources</p><img src="./images/Down-Arrow.svg">
+                </div>
+                <div class="header-items-inner" style="width: 97px; height: 24px;">
+                    <p>Pricing</p><img src="./images/Down-Arrow.svg">
+                </div>
+            </div>
+
+            <div class="header-buttons">
+                <button class="login-button">Login</button>
+                <button class="whitepace-button">Try Whitepace Free<img src="./images/right-arrow.svg"></button>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
