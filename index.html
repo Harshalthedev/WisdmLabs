@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta-name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #d8dce1;
@@ -19,7 +19,6 @@
             justify-content: space-between;
             align-items: center;
             background-color: #043873;
-            padding: 16px 220px;
         }
 
         .header-logo {
@@ -28,6 +27,9 @@
             height: 34px;
             align-items: center;
             justify-content: space-between;
+            padding-left: 220px;
+            padding-top: 16px;
+            padding-bottom: 16px;
         }
         .header-logo img {
             width: 37px;
@@ -39,7 +41,7 @@
             color: #FFFFFF;
             font-weight: bold;
             font-size: 28px;
-            font-family: inter;
+            font-family: "Inter", sans-serif;
         }
 
         .header-logo img {
@@ -47,6 +49,9 @@
         }
 
         .nav-bar {
+            padding-right: 220px;
+            padding-top: 16px;
+            padding-bottom: 16px;
             width: 988.5px;
             height: 60px;
             display: flex;
@@ -97,6 +102,10 @@
             gap: 24px;
             padding: 16px 40px;
             border: none;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: "Inter", sans-serif;
+            color: #043873;
         }
         .whitepace-button {
             border: none;
@@ -107,14 +116,220 @@
             align-items: center;
             gap: 10px;
             text-align: center;
-            border-radius: 8px;;
+            border-radius: 8px;
             background-color: #4F9CF9;
-            padding: 16px 24px;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
 
         }
         .whitepace-button img {
             max-width: 10px;
             max-height: 10px;
+        }
+        
+        /* below header box and blank box */
+        .container {
+            border: none;
+            background: #043873;
+            width: 1920px;
+            height: 829px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } 
+        .main-box {
+            display: flex;
+            flex-direction: column;
+            width: 656px;
+            height: 361px;
+        }
+        .box1 {
+            display: flex;
+            flex-direction: column;
+            align-items:flex-start;
+            width: 656px;
+            height: 238px;
+        }
+        .box1 h2 {
+            font-family: "Inter", sans-serif;
+            color: #FFFFFF;
+            width: 656px;
+            height: 154px;
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0;
+        } 
+        .box1 p {
+            font-family: "Inter", sans-serif;
+            color: #FFFFFF;
+            width: 656px;
+            height: 60px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .box2 {
+            display: flex;
+            align-items:flex-end;
+            width: 656px;
+            height: 123px;
+        }
+        .box2 button     {
+            display: flex;
+            gap: 10px;
+            border: none;
+            justify-content: center;
+            align-items: center;
+            width: 219px;
+            height: 63px;
+            border-radius: 8px;
+            background-color: #4F9CF9;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
+        } 
+        .box2 img {
+            max-width: 10px;
+            max-height: 10px;
+        }
+
+        .blank-space {
+            background-color: #C4DEFD;
+            width: 824px;
+            height: 549px;
+        }
+
+        .container2 {
+            display: flex;
+            flex-direction: column;
+            row-gap: 100px;
+            width: 1920px;
+            height: 1588px;
+            background-color: #FFFFFF;
+            padding: 140px 220px;
+            box-sizing: border-box;
+
+            .container2-mainBox {
+                width: 1480px;
+                height: 547px;
+                display: flex;
+
+                .container2-box {
+                    width: 732px;
+                    height: 547px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    .container2-box-innerBox {
+                        width: 672px;
+                        height: 411px;
+                        h1 {
+                            font-size: 72px;
+                            font-weight: 700;
+                            font-family: "Inter", sans-serif;
+                            width: 672px;
+                            height: 174px;
+                        }
+                        p {
+                            font-size: 18px;
+                            font-weight: 400;
+                            font-family: "Inter", sans-serif;
+                            width: 672px;
+                            height: 90px;
+                        }
+                    }
+                    button {
+                        width: 201px;
+                        height: 63px;
+                        border-radius: 6px;
+                        display: flex;
+                        gap: 10px;
+                        border: none;
+                        background-color: #4F9CF9;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: #FFFFFF;
+                        font-family: "Inter", sans-serif;
+                    
+                    
+                        img {
+                            display: flex;
+                            color: #FFFFFF;
+                            width: 14px;
+                            height: 14px;
+                        }
+                    }
+                }
+                .container2-blankSpace {
+                    width: 748px;
+                    height: 547px;
+                    background-color: #C4DEFD;
+                }
+            }
+            .container2-mainBox2 {
+                display: flex;
+                width: 1480px;
+                height: 661px;
+
+                .container2-mainBox2-design {
+                    width: 710px;
+                    height: 661px;
+                }
+                .container2-mainBox2-box {
+                    box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    width: 770px;
+                    height: 661px;
+                    margin-left: 100px;
+                    padding-top: 183.5px;
+                    padding-bottom: 183.5px;
+                    gap: 24px;
+                    .container2-mainBox2-box-inner {
+                        h1 {
+                            margin: 0 !important;
+                            width: 670px;
+                            height: 87px;
+                            font-size: 72px;
+                            font-weight: 700;
+                            color: #212529;
+                            font-family: "Inter", sans-serif;
+                        }
+                        p {
+                            width: 670px;
+                            height: 60px;
+                            font-size: 18px;
+                            font-weight: 400;
+                            color: #212529;
+                            font-family: "Inter", sans-serif;
+                        }
+                        button {
+                            margin-top: 60px;
+                            display: flex;
+                            align-items: flex-end;
+                            width: 186px;
+                            gap: 10px;
+                            border: none;
+                            height: 63px;
+                            justify-content: center;
+                            align-items: center;
+                            background: #4F9CF9;
+                            color: #FFFFFF;
+                            border-radius: 6px;
+                            img {
+                                color: #FFFFFF;
+                                width: 14px;
+                                width: 14px;
+                            }
+                        }
+                    }
+                }
+            }
         }
     </style>
 </head>
@@ -150,7 +365,48 @@
             </div>
 
         </div>
+    </div>
 
+    <div class="container">
+        <div class="main-box">
+            <div class="box1">
+                <h2>Get More Done with whitepace</h2>
+                <p>Project management software that enables your teams to collaborate, plan, analyze and manage everyday tasks</p>
+            </div>
+            <div class="box2">
+                <button>Try Whitepace Free<img src="./images/right-arrow.svg"></button>
+            </div>
+        </div>
+        
+        <div class="blank-space"></div>
+    </div>
+    
+    <div class="container2">
+        <!-- box1 -->
+        <div class="container2-mainBox">
+            <div class="container2-box">
+                <div class="container2-box-innerBox">
+                    <h1>Project Management</h1>
+                    <p>Images, videos, PDFs and audio files are supported. Create math expressions and diagrams directly from the app. Take photos with the mobile app and save them to a note.</p>
+                </div>
+                <button>Get Started<img src="./images/right-arrow.svg"></button>
+            </div>
+            <div class="container2-blankSpace"></div>
+        </div>
+        <!-- box2 -->
+        <div class="container2-mainBox2">
+            <div class="container2-mainBox2-designBox">
+                <img src="./images/CircleDesign.svg" alt="This is a circle image">
+            </div>
+            <div class="container2-mainBox2-box">
+                <div class="container2-mainBox2-box-inner">
+                    <h1>Work together</h1>
+                    <p>With whitepace, share your notes with your colleagues and collaborate on them.
+                    You can also publish a note to the internet and share the URL with others.</p>
+                    <button>Try it now<img src="./images/right-arrow.svg"></button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
