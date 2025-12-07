@@ -857,6 +857,7 @@ body {
 
 /* container11 */
 .container11 {
+  border: none;
   display: flex;
   background-color: #043873;
   width: 1920px;
@@ -928,5 +929,189 @@ body {
     height: 60px;
     display: flex;
     gap: 40px;
-  } 
+  }
+}
+
+/* container 12 */
+.container12 {
+  border: none;
+  background-color: #043873;
+  width: 1920px;
+  height: 474px;
+  padding: 140px 220px 32px 220px;
+  box-sizing: border-box;
+
+  .container12-mainBox {
+    display: flex;
+    flex-direction: column;
+    width: 1480px;
+    height: 302px;
+    justify-content: space-between;
+
+    .container12-mainBox1 {
+      width: 1480px;
+      height: 182px;
+      display: flex;
+      justify-content: space-between;
+
+      .mainBox1-item1 {
+        width: 240px;
+        height: 182px;
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+
+        .whitepace-img {
+          margin: 0 !important;
+          height: 34px;
+          line-height: 100%;
+          display: flex;
+          gap: 10px;
+          display: flex;
+          color: #ffffff;
+          font-size: 28px;
+          font-weight: 700;
+          letter-spacing: 0%;
+          font-family: "Inter", sans-serif;
+          img {
+            width: 37px;
+            height: 29px;
+          }
+        }
+        p {
+          height: 120px;
+          margin: 0 !important;
+          color: #ffffff;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 30px;
+          letter-spacing: -2%;
+          font-family: "Inter", sans-serif;
+        }
+      }
+      .mainBox-item-common {
+        .bold {
+          a {
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: -2%;
+            color: #ffffff;
+            font-family: "Inter", sans-serif;
+          }
+        }
+        p {
+          a {
+            margin: 15px 0px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: -2%;
+            color: #ffffff;
+            font-family: "Inter", sans-serif;
+          }
+        }
+      }
+      .mainBox5-item5 {
+        width: 259px;
+        height: 182px;
+        display: flex;
+        flex-direction: column;
+        color: #ffffff;
+        h1 {
+          margin: 0px !important;
+          height: 36px;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 38px;
+          letter-spacing: -2%;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        p {
+          margin: 23px 0px 23px 0px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+          letter-spacing: -2%;
+          color: #ffffff;
+          font-family: "Inter", sans-serif;
+        }
+        button {
+          display: flex;
+          padding: 20px 40px;
+          width: 186px;
+          height: 60px;
+          gap: 10px;
+          border: none;
+          justify-content: center;
+          align-items: center;
+          background: #4f9cf9;
+          color: #ffffff;
+          border-radius: 8px;
+
+          img {
+            color: #ffffff;
+            width: 14px;
+            width: 14px;
+          }
+        }
+      }
+    }
+    .line {
+      border: 1px solid #2E4E73;
+    }
+    .container12-mainBox2 {
+      display: flex;
+      width: 1480px;
+      height: 20px;
+      justify-content: space-between;
+
+      .mainBox2-left {
+        display: flex;
+        gap: 60px;
+        .english {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px; /* space between globe, text, arrow */
+          text-decoration: none;
+          color: #ffffff;
+          font-size: 16px;
+          .icon {
+            width: 19px; /* adjust icon size */
+            height: 19px;
+          }
+          .arrow {
+            width: 20px;
+            height: 14px;
+          }
+          .english span {
+            width: 53px;
+            height: 20px;
+            display: inline-block;
+          }
+        }
+        a {
+          color: #ffffff;
+        }
+      }
+      .mainBox2-right {
+        display: flex;
+        color: #ffffff;
+        gap: 32px;
+        .item1 {
+          width: 9px;
+          height: 16.68px;
+        }
+        .item2 {
+          width: 17px;
+          height: 13.81px;
+        }
+        .item3 {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
 }
