@@ -1,0 +1,917 @@
+* body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+:root {
+  --maxWidth: 1440px;
+}
+
+.header {
+  max-height: 92px;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #043873;
+
+  .innerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--maxWidth);
+    /* KEY FIX: Use max-width + width: 100% */
+    width: 100%;
+    padding: 16px 24px;
+    /* Adds breathing room on sides */
+    box-sizing: border-box;
+
+    .header-logo {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      /* Prevent logo from shrinking */
+      flex-shrink: 0;
+
+      img {
+        width: 37px;
+        height: 29px;
+      }
+
+      p {
+        margin: 0;
+        line-height: 100%;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 28px;
+      }
+    }
+
+    .nav-bar {
+      /* KEY FIX: Remove fixed width (988.5px), let it flow */
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 40px;
+      /* Space between links and buttons */
+      flex-grow: 1;
+      /* Takes up available space */
+      margin-left: 40px;
+
+      .header-items {
+        display: flex;
+        gap: 32px;
+        /* Uniform spacing between links */
+        align-items: center;
+
+        /* Corrected class name from header-inner-items to header-items-inner */
+        .header-items-inner {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+
+          p {
+            margin: 0;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            white-space: nowrap;
+            /* Prevents text breaking */
+          }
+
+          img {
+            width: 12px;
+            /* Adjusted reasonable size for arrow */
+            height: auto;
+          }
+        }
+      }
+
+      .header-buttons {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+
+        .login-button {
+          background-color: #ffe492;
+          border-radius: 8px;
+          padding: 16px 40px;
+          border: none;
+          font-size: 18px;
+          font-weight: 700;
+          color: #043873;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+
+        .whitepace-button {
+          border: none;
+          display: flex;
+          padding: 16px 24px;
+          /* Dynamic padding instead of fixed width */
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          background-color: #4f9cf9;
+          color: #ffffff;
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+          white-space: nowrap;
+
+          img {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* --- Default Desktop Styles --- */
+
+/* Initially hide the hamburger menu on desktop */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-menu .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+/* container 1 */
+.hero-section {
+  width: 100%;
+  background-color: #043873;
+  display: flex;
+  justify-content: center;
+  /* Padding handles the vertical space instead of fixed height */
+  padding: 140px 20px;
+  box-sizing: border-box;
+}
+
+/* --- Main Container --- */
+.hero-container {
+  width: 100%;
+  max-width: 1440px; /* Max constraint for large screens */
+  display: flex;
+
+  /* 1. DESKTOP DEFAULT: Row Layout (Side by Side) */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px; /* Space between the two boxes */
+}
+
+/* --- Left Side: Text Box --- */
+.hero-text-content {
+  /* Flex: 1 allows it to shrink/grow sharing space with the blue box */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 60px;
+  max-width: 656px; /* It won't get wider than this */
+  min-width: 0; /* Important CSS trick to allow flex items to shrink below content size if needed */
+}
+
+.hero-text-body h2 {
+  color: #ffffff;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.hero-text-body p {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4f9cf9;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hero-btn img {
+  width: 14px;
+  height: 14px;
+}
+
+/* --- Right Side: Blue Box --- */
+.hero-visual {
+  /* Flex: 1 allows it to shrink/grow sharing space with the text */
+  flex: 1;
+  width: 100%;
+  background-color: #c4defd;
+  border-radius: 4px;
+  max-width: 824px; /* It won't get wider than this */
+
+  /* Aspect Ratio is key here. 
+       It keeps the box shape (Rectangle) even when it shrinks at 1152px */
+  aspect-ratio: 824 / 549;
+  height: auto;
+}
+
+/* container 2 */
+
+/* --- Global Reset --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* --- MAIN WRAPPER --- */
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  /* Padding: Top/Bottom 140px, Left/Right 20px (prevents edge touching) */
+  padding: 140px 20px;
+  /* Space between the "Project Management" and "Work Together" sections */
+  gap: 160px;
+
+  /* --- SHARED BUTTON STYLES --- */
+  button {
+    width: 201px;
+    height: 63px;
+    border-radius: 6px;
+    display: flex;
+    gap: 10px;
+    border: none;
+    background-color: #4f9cf9;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+
+    img {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  /* =========================================
+     SECTION 1: Project Management
+     ========================================= */
+  .container2-mainBox {
+    display: flex;
+    flex-direction: row; /* Side by side on Desktop */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px;
+    gap: 60px;
+
+    /* Text Content */
+    .container2-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 60px;
+
+      .container2-box-innerBox {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        h1 {
+          font-size: 72px;
+          font-weight: 700;
+          color: #212529;
+          line-height: 1.1;
+        }
+
+        p {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.6;
+          color: #212529;
+          max-width: 672px;
+        }
+      }
+    }
+
+    /* Blue Empty Box */
+    .container2-blankSpace {
+      flex: 1;
+      width: 100%;
+      background-color: #c4defd;
+      aspect-ratio: 748 / 547; /* Maintains shape on desktop */
+      max-width: 748px;
+      border-radius: 4px;
+    }
+  }
+
+  /* =========================================
+     SECTION 2: Work Together
+     ========================================= */
+  .container2-mainBox2 {
+    display: flex;
+    flex-direction: row; /* Side by side on Desktop */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px;
+    gap: 100px;
+
+    /* Image Box */
+    .container2-mainBox2-designBox {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: auto;
+        max-width: 710px;
+        object-fit: contain;
+      }
+    }
+
+    /* Text Content */
+    .container2-mainBox2-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .container2-mainBox2-box-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+
+        h1 {
+          font-size: 72px;
+          font-weight: 700;
+          color: #212529;
+          line-height: 1.1;
+        }
+
+        p {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.6;
+          color: #212529;
+        }
+
+        button {
+          margin-top: 36px;
+        }
+      }
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: Tablet & Mobile (Max 1152px)
+     ========================================= */
+
+  /* 1. TABLET/SMALL LAPTOP VIEW (Switch to Column) */
+  @media screen and (max-width: 1152px) {
+    padding: 80px 20px; /* Reduce outer padding */
+    gap: 100px; /* Reduce gap between the two main sections */
+
+    /* --- SECTION 1 FIX --- */
+    .container2-mainBox {
+      flex-direction: column; /* Stack Items */
+      text-align: center;
+      /* This gap acts as PADDING between Text and Blue Box */
+      gap: 60px;
+    }
+
+    .container2-box {
+      align-items: center !important; /* Center the text & button */
+    }
+
+    .container2-blankSpace {
+      width: 100%; /* Make box full width */
+      /* Slightly flatter aspect ratio for tablet looks better */
+      aspect-ratio: 4 / 3;
+    }
+
+    /* --- SECTION 2 FIX --- */
+    .container2-mainBox2 {
+      flex-direction: column; /* Stack Items */
+      text-align: center;
+      gap: 60px; /* Padding between Image and Text */
+    }
+
+    .container2-mainBox2-designBox img {
+      max-width: 500px; /* Limit image size on tablet */
+    }
+
+    .container2-mainBox2-box-inner {
+      align-items: center !important; /* Center text & button */
+    }
+
+    /* Typography Adjustments */
+    h1 {
+      font-size: 54px !important;
+    }
+  }
+
+  /* 2. MOBILE VIEW (Max 425px) */
+  @media screen and (max-width: 425px) {
+    padding: 60px 20px;
+    gap: 80px;
+
+    /* Adjust Section 1 */
+    .container2-mainBox {
+      gap: 40px; /* Less space between text and box */
+    }
+
+    /* Make the blue box smaller on mobile */
+    .container2-blankSpace {
+      height: 300px;
+      aspect-ratio: unset; /* Ignore aspect ratio, force height */
+    }
+
+    /* Adjust Section 2 */
+    .container2-mainBox2 {
+      gap: 40px;
+    }
+
+    /* Typography & Buttons */
+    h1 {
+      font-size: 36px !important;
+    }
+
+    p {
+      font-size: 16px !important;
+    }
+
+    button {
+      width: 100%; /* Full width buttons for easy tapping */
+    }
+  }
+}
+
+/* container 3 */
+.container3 {
+  display: flex;
+  justify-content: center; /* Centers the inner content */
+  width: 100%;
+  background-color: #043873;
+  /* Replaced fixed height/width with padding for responsiveness */
+  padding: 140px 20px; 
+  box-sizing: border-box;
+
+  /* --- INNER WRAPPER --- */
+  .container3-mainBox {
+    display: flex;
+    flex-direction: row; /* Desktop: Side by Side */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px; /* Limits width on big screens */
+    gap: 98px; /* Space between text and visual box */
+
+    /* --- LEFT SIDE: TEXT --- */
+    .container3-mainBox-Box1 {
+      flex: 1; /* Takes available space */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 60px; /* Space between text and button */
+
+      .innerBox {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        h1 {
+          margin: 0;
+          line-height: 1.1;
+          font-size: 72px;
+          font-weight: 700;
+          color: #ffffff;
+        }
+
+        p {
+          line-height: 30px;
+          font-size: 18px;
+          font-weight: 400;
+          color: #ffffff;
+        }
+      }
+
+      button {
+        display: flex;
+        width: 171px;
+        height: 63px;
+        gap: 10px;
+        border: none;
+        justify-content: center;
+        align-items: center;
+        background: #4f9cf9;
+        color: #ffffff;
+        border-radius: 6px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+
+    /* --- RIGHT SIDE: VISUAL BOX --- */
+    .container3-mainBox-Box2 {
+      flex: 1; /* Takes available space */
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 4px;
+      /* Aspect Ratio ensures it keeps the shape (686/479) as it shrinks */
+      aspect-ratio: 686 / 479;
+      max-width: 686px;
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: Tablet & Mobile (Max 1152px)
+     ========================================= */
+  @media screen and (max-width: 1152px) {
+    
+    padding: 80px 20px; /* Reduce outer padding */
+
+    .container3-mainBox {
+      flex-direction: column; /* Stack Items */
+      text-align: center;
+      gap: 60px;
+    }
+
+    
+    /* Center the Text Section */
+    .container3-mainBox-Box1 {
+      display: flex;
+      align-items: center !important; /* Centers button */
+      width: 100%;
+    }
+
+    /* Adjust Typography */
+    .container3-mainBox-Box1 .innerBox h1 {
+        font-size: 54px;
+    }
+
+    /* Make Visual Box Full Width */
+    .container3-mainBox-Box2 {
+      width: 100%;
+      /* Adjust aspect ratio slightly for tablet if needed, or keep same */
+      aspect-ratio: 4 / 3; 
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: Mobile (Max 425px)
+     ========================================= */
+  @media screen and (max-width: 425px) {
+    padding: 60px 20px;
+
+    .container3-mainBox {
+        gap: 40px;
+    }
+
+    /* Typography */
+    .container3-mainBox-Box1 .innerBox h1 {
+        font-size: 36px;
+    }
+
+    .container3-mainBox-Box1 .innerBox p {
+        font-size: 16px;
+    }
+
+    /* Full Width Button */
+    .container3-mainBox-Box1 button {
+        width: 100%;
+    }
+
+    /* Visual Box Height Adjustment */
+    .container3-mainBox-Box2 {
+       /* Force a specific height if aspect ratio makes it too tall on mobile */
+       height: 300px;
+       aspect-ratio: unset;
+    }
+  }
+  @media screen and (max-width: 375px) {
+    
+    /* 1. Reduce padding to give text more horizontal room */
+    padding: 60px 15px; 
+
+    .container3-mainBox-Box1 .innerBox h1 {
+        /* 2. Force font smaller so "Extension" fits */
+        font-size: 28px !important; 
+        
+        /* 3. Safety Net: Break word if it's still too long */
+        word-wrap: break-word; 
+        overflow-wrap: break-word;
+    }
+
+    .container3-mainBox-Box1 .innerBox p {
+        font-size: 14px; /* Slightly smaller text for balance */
+    }
+  }
+}
+
+/* c0ntainer 4 */
+/* --- Global Reset --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden; /* Prevents white bar on small screens */
+}
+
+/* --- CONTAINER 4 --- */
+.container4 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #ffffff;
+  /* Replaced fixed padding/height with fluid padding */
+  padding: 140px 20px; 
+
+  .mainBox {
+    display: flex;
+    flex-direction: row; /* Desktop: Row Layout */
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px; /* Constraints width */
+    gap: 98px; /* Gap between visual and text */
+
+    /* --- LEFT SIDE: BLUE BOX --- */
+    .empty-box {
+      flex: 1; /* Takes available space */
+      width: 100%;
+      background-color: #c4defd;
+      /* Aspect Ratio maintains the shape (714 / 532) */
+      aspect-ratio: 714 / 532;
+      max-width: 714px;
+      border-radius: 4px;
+    }
+
+    /* --- RIGHT SIDE: TEXT --- */
+    .Box1 {
+      flex: 1; /* Takes available space */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 60px;
+
+      .innerBox {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        /* Removed fixed height/width to allow content to flow */
+        width: 100%; 
+
+        h1 {
+          margin: 0;
+          line-height: 1.1;
+          font-size: 72px;
+          font-weight: 700;
+          color: #212529;
+        }
+
+        p {
+          margin: 0;
+          line-height: 1.6; /* Better readability */
+          font-size: 18px;
+          font-weight: 400;
+          color: #212529;
+        }
+      }
+
+      button {
+        display: flex;
+        width: 171px;
+        height: 63px;
+        gap: 10px;
+        border: none;
+        justify-content: center;
+        align-items: center;
+        background: #4f9cf9;
+        color: #ffffff;
+        border-radius: 6px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: Tablet & Small Laptop (Max 1152px)
+     ========================================= */
+  @media screen and (max-width: 1152px) {
+    
+    padding: 80px 20px;
+    .Box1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center !important;
+    }
+    .mainBox {
+      /* Stack Items Vertically */
+      flex-direction: column; 
+      text-align: center;
+      gap: 60px;
+    }
+
+    /* Adjust Blue Box */
+    .empty-box {
+        width: 100%;
+        aspect-ratio: 4 / 3; /* Standard rectangle */
+    }
+
+    /* Adjust Text Box */
+    .Box1 {
+        width: 100%;
+        align-items: center; /* Centers Button */
+    }
+
+    .Box1 .innerBox h1 {
+        font-size: 54px; /* Smaller Heading */
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: Mobile (Max 425px)
+     ========================================= */
+  @media screen and (max-width: 425px) {
+    
+    padding: 60px 20px;
+
+    .mainBox {
+        gap: 40px;
+    }
+
+    .Box1 .innerBox h1 {
+        font-size: 36px;
+    }
+
+    .Box1 .innerBox p {
+        font-size: 16px;
+    }
+
+    /* Full Width Button */
+    .Box1 button {
+        width: 100%;
+    }
+
+    .empty-box {
+        height: 300px;
+        aspect-ratio: unset;
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: Small Mobile (Max 375px)
+     Fixes the "White Bar" issue
+     ========================================= */
+  @media screen and (max-width: 375px) {
+    
+    padding: 60px 15px; /* Tighter padding */
+
+    .Box1 .innerBox h1 {
+        font-size: 28px !important; /* Fits "Customise" on one line */
+        word-wrap: break-word;
+    }
+    
+    .Box1 .innerBox p {
+        font-size: 14px;
+    }
+
+    .Box1 button {
+        font-size: 16px;
+    }
+  }
+}
+
+
+
+
+/* (Max-width 768px) --- */
+@media screen and (max-width: 768px) {
+  .header .innerHeader .nav-bar {
+    display: none;
+  }
+  .hero-section {
+    padding: 60px 20px;
+  }
+
+  .hero-container {
+    /* 2. SWITCH TO COLUMN (Stack vertically) */
+    flex-direction: column;
+    text-align: center;
+    gap: 60px;
+  }
+
+  .hero-text-content {
+    /* On mobile/tablet, text takes full width */
+    max-width: 100%;
+    align-items: center; /* Center the button */
+  }
+
+  .hero-text-body h2 {
+    font-size: 42px; /* Smaller font */
+  }
+
+  .hero-visual {
+    /* On mobile/tablet, blue box takes full width */
+    width: 100%;
+    max-width: 100%;
+    /* We can reduce aspect ratio slightly if it looks too tall on mobile */
+    aspect-ratio: 4/3;
+  }
+}
+
+/* mobile screen 425px */
+@media screen and (max-width: 425px) {
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-text-body h2 {
+    font-size: 36px;
+  }
+  .hero-btn {
+    width: 100%; /* Full width button */
+  }
+}
+
+/*desktop 1152px */
+
+@media screen and (max-width: 1152px) {
+  .header .innerHeader .nav-bar .header-buttons {
+    margin-right: 20px;
+  }
+
+  .header .innerHeader .nav-bar .header-items {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    /* Assuming you added the hamburger menu from the last step */
+  }
+
+  /* 3. Ensure header stays properly aligned (Logo Left, Menu Right) */
+  .header .innerHeader {
+    /* Revert to row layout with space-between */
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 24px;
+    width: 100%;
+  }
+}
