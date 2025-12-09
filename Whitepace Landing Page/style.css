@@ -435,7 +435,7 @@ body {
 
     /* --- SECTION 2 FIX --- */
     .container2-mainBox2 {
-      flex-direction: column; /* Stack Items */
+      flex-direction: column-reverse; /* Stack Items */
       text-align: center;
       gap: 60px; /* Padding between Image and Text */
     }
@@ -839,9 +839,265 @@ body {
 }
 
 /* container 5     */
-/* this block needs to implement */
+.container5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 140px 20px;
+  gap: 80px;
 
-/* container 6 */
+  /* --- HEADER SECTION --- */
+  .mainBox1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 900px;
+
+    h1 {
+      margin: 0;
+      color: #212529;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0;
+      color: #212529;
+      font-size: 18px;
+      line-height: 30px;
+      font-weight: 400;
+      max-width: 800px;
+    }
+  }
+
+  /* --- CARDS WRAPPER --- */
+  .mainBox2 {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: center;
+
+    .cards {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 32px;
+      width: 100%;
+      align-items: stretch;
+    }
+  }
+
+  /* --- INDIVIDUAL CARD STYLING --- */
+  .card {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 10px;
+    border: 1px solid #ffe492;
+    background-color: #ffffff;
+    padding: 40px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    /* Card Header */
+    .card-item1 {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      h1 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #212529;
+        margin: 0;
+        transition: color 0.3s;
+      }
+
+      .money {
+        font-size: 36px;
+        font-weight: 700;
+        color: #212529;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        transition: color 0.3s;
+      }
+
+      .text {
+        font-size: 18px;
+        font-weight: 500;
+        color: #212529;
+        margin: 0;
+        transition: color 0.3s;
+      }
+    }
+
+    /* Card List */
+    .card-item2 {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+
+      .list-item {
+        display: flex;
+        gap: 19px;
+        align-items: flex-start;
+        font-size: 16px;
+        font-weight: 400;
+        color: #212529;
+        line-height: 20px;
+        transition: color 0.3s;
+
+        .check-icon {
+          width: 18px;
+          height: 18px;
+          /* Default Black Filter */
+          filter: invert(13%) sepia(10%) saturate(692%) hue-rotate(169deg)
+            brightness(93%) contrast(88%);
+          transition: filter 0.3s;
+        }
+      }
+    }
+
+    /* Button */
+    button {
+      margin-top: 15px;
+      width: 166px;
+      height: 51px;
+      border-radius: 8px;
+      border: 1px solid #ffe492;
+      background-color: #ffffff;
+      color: #212529;
+      font-size: 16px;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      .btn-icon {
+        width: 14px;
+        height: 14px;
+        transition: filter 0.3s;
+      }
+    }
+  }
+
+  /* --- ACTIVE/HOVER STATES --- */
+  .card.active,
+  .card:hover {
+    background-color: #043873;
+    transform: scale(1.05);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    border: none;
+    z-index: 2;
+
+    /* Turn Text White */
+    .card-item1 h1,
+    .card-item1 .money,
+    .card-item1 .text,
+    .card-item2 .list-item {
+      color: #ffffff;
+    }
+
+    /* Turn Icons White */
+    .check-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    /* Style Button */
+    button {
+      background-color: #4f9cf9;
+      color: #ffffff;
+      border: none;
+      width: 50%;
+
+      .btn-icon {
+        filter: brightness(0) invert(1);
+      }
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: TABLET (Max 1024px)
+     ========================================= */
+  @media screen and (max-width: 1254px) {
+    .mainBox1 h1 {
+      font-size: 54px;
+    }
+
+    .mainBox2 .cards {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      justify-content: flex-start;
+      padding: 20px 15%; /* Buffer padding */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .mainBox2 .cards::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      min-width: 70%;
+      max-width: 70%;
+      transform: none !important;
+      scroll-snap-align: center;
+    }
+
+    .card.active {
+      transform: none !important;
+    }
+
+    .card button {
+      width: 50%;
+    }
+  }
+
+  /* =========================================
+     RESPONSIVE: MOBILE (Max 426px)
+     ========================================= */
+  @media screen and (max-width: 426px) {
+    padding: 60px 0;
+
+    .mainBox1 {
+      padding: 0 20px;
+    }
+
+    .mainBox1 h1 {
+      font-size: 36px;
+    }
+
+    .mainBox2 .cards {
+      padding: 20px 20px; /* Remove buffer */
+      gap: 20px;
+    }
+
+    .card {
+      min-width: 100%;
+      max-width: 100%;
+      scroll-snap-align: center;
+    }
+
+    .card button {
+      width: 70% !important;
+    }
+  }
+}
 
 /* --- CONTAINER 6 --- */
 .container6 {
@@ -1450,9 +1706,10 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 60px;
+  /* Fluid Padding */
   padding: 140px 20px;
 
-  /* Heading */
+  /* --- HEADER (MainBox1) --- */
   .container10-item1 {
     display: flex;
     justify-content: center;
@@ -1462,20 +1719,20 @@ body {
       text-align: center;
       margin: 0;
       color: #212529;
-      font-size: 72px;
+      font-size: 72px; /* Requirement 3 */
       font-weight: 700;
       letter-spacing: -2%;
       line-height: 1.1;
     }
   }
 
-  /* Cards Wrapper */
+  /* --- CARDS WRAPPER (MainBox2) --- */
   .container10-item2 {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1480px;
+    max-width: 1480px; /* Requirement 1: Stop growing at 1440px+ */
 
     .mainBox2-box {
       display: flex;
@@ -1483,185 +1740,190 @@ body {
       justify-content: center;
       gap: 32px;
       width: 100%;
-      /* Important for responsiveness: allows growing/shrinking */
-      align-items: stretch;
+      align-items: stretch; /* Ensures equal height cards */
     }
   }
-}
 
-/* --- CARD STYLING (Default White State) --- */
-.cards {
-  flex: 1; /* Allows fluid growing/shrinking on desktop/tablet */
-  min-width: 300px; /* Prevents getting too thin */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-  padding: 60px 40px;
-  background-color: #ffffff;
-  cursor: pointer; /* Indicates it is clickable */
-  transition: all 0.3s ease; /* Smooth transition for color change */
-
-  /* Text Section */
-  .box-item1 {
+  /* --- INDIVIDUAL CARD STYLING --- */
+  .cards {
+    flex: 1; /* Desktop: Share space equally */
+    min-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 60px 40px;
+    background-color: #4f9cf9;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition */
 
-    img {
-      width: 86px;
-      height: auto;
-    }
-
-    .text {
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 30px;
-      color: #212529; /* Black text */
-      transition: color 0.3s ease;
-    }
-
-    .horizontal-line {
-      width: 100%;
-      height: 1px;
-      background-color: #212529; /* Black line */
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-    }
-  }
-
-  /* Client Info Section */
-  .box-item2 {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 40px;
-
-    img {
-      width: 95px;
-      height: 95px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .inner-item {
+    /* Text Section */
+    .box-item1 {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 32px;
 
-      .name {
-        font-size: 24px;
-        font-weight: 600;
-        color: #212529;
+      img {
+        width: 86px;
+        height: auto;
+      }
+
+      .text {
+        font-size: 18px; /* Requirement 3 */
+        font-weight: 400;
+        line-height: 30px;
+        color: #ffffff;
         transition: color 0.3s ease;
       }
 
-      .name-description {
-        font-size: 16px;
-        line-height: 1.4;
-        font-weight: 400;
-        color: #212529;
-        transition: color 0.3s ease;
+      .horizontal-line {
+        width: 100%;
+        height: 1px;
+        background-color: #ffffff;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+      }
+    }
+
+    /* Client Info */
+    .box-item2 {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+
+      img {
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .inner-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .name {
+          font-size: 24px;
+          font-weight: 600;
+          color: #ffffff;
+          transition: color 0.3s ease;
+        }
+
+        .name-description {
+          font-size: 16px;
+          line-height: 1.4;
+          font-weight: 400;
+          color: #ffffff;
+          transition: color 0.3s ease;
+        }
       }
     }
   }
-}
 
-/* --- BLUE CARD STATE (Toggled Class) --- */
-.cards.blue {
-  background-color: #4f9cf9;
+  .cards.active {
+    background-color: #ffffff !important; /* Turns White */
+    transform: scale(1.02); /* Optional: grow effect */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
 
-  /* Change text colors to white */
-  .text,
-  .name,
-  .name-description {
-    color: #ffffff !important;
+    /* Turn Text Black */
+    .text,
+    .name,
+    .name-description {
+      color: #212529 !important;
+    }
+
+    /* Turn Line Black */
+    .horizontal-line {
+      background-color: #212529 !important;
+    }
   }
 
-  /* Change line color to white */
-  .horizontal-line {
-    background-color: #ffffff !important;
-  }
-}
-
-/* --- DOTS STYLING --- */
-.three-dots {
-  display: flex;
-  gap: 12px;
-  margin-top: 60px;
-}
-.dot {
-  width: 12px;
-  height: 12px;
-  background-color: #4f9cf9;
-  border-radius: 50%;
-  opacity: 0.2;
-}
-.dot.active {
-  opacity: 1;
-}
-
-/* =========================================
-   RESPONSIVE: Tablet (Max 1152px)
-   Cards grow/shrink to fit
-   ========================================= */
-@media screen and (max-width: 1152px) {
-  .container10 {
-    padding: 100px 20px;
-  }
-
-  .container10-item1 h1 {
-    font-size: 54px;
-  }
-
-  /* Wrap cards if they get too squeezed */
-  .container10-item2 .mainBox2-box {
-    flex-wrap: wrap;
-  }
-}
-
-/* =========================================
-   RESPONSIVE: Mobile (Max 425px)
-   HORIZONTAL SCROLL + SNAP
-   ========================================= */
-@media screen and (max-width: 425px) {
-  .container10 {
-    padding: 60px 0; /* Remove side padding so scroll goes to edge */
-  }
-
-  .container10-item1 h1 {
-    font-size: 36px;
-    padding: 0 20px;
-  }
-
-  /* Scroll Container Logic */
-  .container10-item2 .mainBox2-box {
+  /* --- DOTS --- */
+  .three-dots {
     display: flex;
-    flex-direction: row; /* Force Row */
-    flex-wrap: nowrap; /* No wrapping, force overflow */
-    overflow-x: auto; /* Enable horizontal scroll */
-    scroll-snap-type: x mandatory; /* Snap logic */
-    gap: 20px;
-    width: 100%;
-    padding: 20px; /* Padding inside scroll area */
+    gap: 12px;
+    margin-top: 60px;
 
-    /* Hide Scrollbar for cleaner look */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    .dot {
+      width: 12px;
+      height: 12px;
+      background-color: #4f9cf9;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+    .dot.active {
+      opacity: 1;
+    }
   }
 
-  /* Hide Chrome Scrollbar */
-  .container10-item2 .mainBox2-box::-webkit-scrollbar {
-    display: none;
+  /* =========================================
+     RESPONSIVE: Tablet (Max 1152px - Covers iPad)
+     Requirement 8: Horizontal Slide
+     ========================================= */
+  @media screen and (max-width: 1152px) {
+    padding: 100px 20px;
+
+    .container10-item1 h1 {
+      font-size: 54px;
+    }
+
+    /* SCROLL CONTAINER */
+    .container10-item2 .mainBox2-box {
+      display: flex;
+      flex-wrap: nowrap; /* Force horizontal line */
+      overflow-x: auto; /* Enable scroll */
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      justify-content: flex-start;
+
+      /* Buffer padding allows centering 1st/last cards */
+      padding: 20px 15%;
+
+      /* Hide Scrollbar */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .container10-item2 .mainBox2-box::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* CARD SIZING */
+    .cards {
+      /* 70% width allows next card to be seen peeking */
+      min-width: 70%;
+      max-width: 70%;
+      scroll-snap-align: center;
+      transform: none !important; /* Disable hover scale on touch */
+    }
   }
 
-  /* Individual Card Logic for Scroll */
-  .cards {
-    /* Force card to take full width of container */
-    min-width: 100%;
-    scroll-snap-align: center; /* Snap to center */
+  /* =========================================
+     RESPONSIVE: Mobile (Max 425px)
+     Requirement 7: Single Card Scroll
+     ========================================= */
+  @media screen and (max-width: 426px) {
+    padding: 60px 0; /* Remove outer padding */
+
+    .container10-item1 h1 {
+      font-size: 36px;
+      padding: 0 20px;
+    }
+
+    .container10-item2 .mainBox2-box {
+      padding: 20px 20px; /* Standard padding inside scroll area */
+      gap: 20px;
+    }
+
+    /* Force 100% Width */
+    .cards {
+      min-width: 100%;
+      max-width: 100%;
+      scroll-snap-align: center;
+    }
   }
 }
 
@@ -2124,8 +2386,6 @@ body {
     .container12-mainBox .container12-mainBox1 .mainBox5-item5 button {
       width: 75% !important;
     }
-
-
 
     /* Ensure no horizontal overflow */
     .container12-mainBox .container12-mainBox1 {
