@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <div class="header">
+    <!-- <div class="header">
       <div class="innerHeader">
         <div class="header-logo">
           <img src="./images/headerLogo.svg" alt="logo" />
@@ -46,6 +46,58 @@
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
+        </div>
+      </div>
+    </div> -->
+    <div class="header">
+      <div class="innerHeader">
+        <div class="header-logo">
+          <img src="./images/headerLogo.svg" alt="logo" />
+          <p>whitepace</p>
+        </div>
+
+        <div class="nav-bar">
+          <div class="header-items">
+            <div class="header-items-inner">
+              <p>Products</p>
+              <img src="./images/Down-Arrow.svg" />
+            </div>
+            <div class="header-items-inner">
+              <p>Solutions</p>
+              <img src="./images/Down-Arrow.svg" />
+            </div>
+            <div class="header-items-inner">
+              <p>Resources</p>
+              <img src="./images/Down-Arrow.svg" />
+            </div>
+            <div class="header-items-inner">
+              <p>Pricing</p>
+              <img src="./images/Down-Arrow.svg" />
+            </div>
+          </div>
+          <div class="header-buttons">
+            <button class="login-button">Login</button>
+            <button class="whitepace-button">
+              Try Whitepace Free<img src="./images/right-arrow.svg" />
+            </button>
+          </div>
+        </div>
+
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+        <label for="nav-toggle" class="hamburger-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </label>
+
+        <div class="mobile-menu">
+          <a href="#">Products</a>
+          <a href="#">Solutions</a>
+          <a href="#">Resources</a>
+          <a href="#">Pricing</a>
+          <button class="login-btn-mobile">Login</button>
+          <button class="try-btn-mobile">Try Whitepace Free</button>
         </div>
       </div>
     </div>
@@ -516,67 +568,6 @@
       </div>
     </div>
 
-    <!-- Script -->
-    <script>
-      function selectCard(clickedCard, event) {
-        // 1. Stop the click from bubbling up to the document (prevents immediate deselect)
-        event.stopPropagation();
-
-        // 2. Remove 'active' class from ALL cards
-        const allCards = document.querySelectorAll(".card");
-        allCards.forEach((card) => {
-          // If we want to toggle the same card off by clicking it again:
-          if (card !== clickedCard) {
-            card.classList.remove("active");
-          }
-        });
-
-        // 3. Toggle 'active' on the clicked card
-        clickedCard.classList.toggle("active");
-      }
-
-      // // 4. Global click listener to deselect when clicking "somewhere else"
-      // document.addEventListener("click", function () {
-      //   const allCards = document.querySelectorAll(".card");
-      //   allCards.forEach((card) => card.classList.remove("active"));
-      // });
-
-      function toggleCard(clickedCard, event) {
-        // 1. Stop the click from bubbling to the window (prevents immediate reset)
-        event.stopPropagation();
-
-        // 2. Get all cards
-        const allCards = document.querySelectorAll(".cards");
-
-        // 3. Reset ALL cards to Default (Blue background, White Quote)
-        allCards.forEach((card) => {
-          card.classList.remove("active"); // Removes white background
-
-          // Reset icon to White-Quote (because background is Blue)
-          const img = card.querySelector(".quote-icon");
-          if (img) img.src = "./images/White-Quote.svg";
-        });
-
-        // 4. Set ONLY the clicked card to Active (White background, Blue Quote)
-        clickedCard.classList.add("active");
-
-        const activeImg = clickedCard.querySelector(".quote-icon");
-        if (activeImg) activeImg.src = "./images/Blue-Quote.svg";
-      }
-
-      // 5. Global Listener: If user clicks anywhere else, reset everything
-      document.addEventListener("click", function () {
-        const allCards = document.querySelectorAll(".cards");
-        allCards.forEach((card) => {
-          card.classList.remove("active"); // Back to Blue
-
-          // Back to White Quote
-          const img = card.querySelector(".quote-icon");
-          if (img) img.src = "./images/White-Quote.svg";
-        });
-      });
-    </script>
-
     <!-- container 11 -->
     <div class="container11">
       <div class="container11-item">
@@ -642,8 +633,7 @@
           </div>
         </div>
 
-        <div class="line"></div>
-
+        <!-- line -->
         <div class="container12-mainBox2">
           <div class="mainBox2-left">
             <div class="lang-dropdown">
@@ -661,6 +651,7 @@
             </div>
           </div>
 
+          <div class="line"></div>
           <div class="mainBox2-right">
             <a class="item1" href="#"
               ><img src="./images/Facebook.svg" alt="Facebook"
@@ -675,5 +666,66 @@
         </div>
       </div>
     </footer>
+
+    <!-- Script -->
+    <script>
+      function selectCard(clickedCard, event) {
+        // 1. Stop the click from bubbling up to the document (prevents immediate deselect)
+        event.stopPropagation();
+
+        // 2. Remove 'active' class from ALL cards
+        const allCards = document.querySelectorAll(".card");
+        allCards.forEach((card) => {
+          // If we want to toggle the same card off by clicking it again:
+          if (card !== clickedCard) {
+            card.classList.remove("active");
+          }
+        });
+
+        // 3. Toggle 'active' on the clicked card
+        clickedCard.classList.toggle("active");
+      }
+
+      // // 4. Global click listener to deselect when clicking "somewhere else"
+      // document.addEventListener("click", function () {
+      //   const allCards = document.querySelectorAll(".card");
+      //   allCards.forEach((card) => card.classList.remove("active"));
+      // });
+
+      function toggleCard(clickedCard, event) {
+        // 1. Stop the click from bubbling to the window (prevents immediate reset)
+        event.stopPropagation();
+
+        // 2. Get all cards
+        const allCards = document.querySelectorAll(".cards");
+
+        // 3. Reset ALL cards to Default (Blue background, White Quote)
+        allCards.forEach((card) => {
+          card.classList.remove("active"); // Removes white background
+
+          // Reset icon to White-Quote (because background is Blue)
+          const img = card.querySelector(".quote-icon");
+          if (img) img.src = "./images/White-Quote.svg";
+        });
+
+        // 4. Set ONLY the clicked card to Active (White background, Blue Quote)
+        clickedCard.classList.add("active");
+
+        const activeImg = clickedCard.querySelector(".quote-icon");
+        if (activeImg) activeImg.src = "./images/Blue-Quote.svg";
+      }
+
+      // 5. Global Listener: If user clicks anywhere else, reset everything
+      document.addEventListener("click", function () {
+        const allCards = document.querySelectorAll(".cards");
+        allCards.forEach((card) => {
+          card.classList.remove("active"); // Back to Blue
+
+          // Back to White Quote
+          const img = card.querySelector(".quote-icon");
+          if (img) img.src = "./images/White-Quote.svg";
+        });
+      });
+    </script>
   </body>
 </html>

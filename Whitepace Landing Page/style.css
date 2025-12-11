@@ -1,7 +1,7 @@
 html,
 body {
   width: 100%;
-  overflow-x: hidden; /* Cuts off any accidental overflow */
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
@@ -14,8 +14,12 @@ body {
 }
 :root {
   --maxWidth: 1440px;
+  --whiteColor: #ffffff;
+  --blueColor: #043873;
+  --skyBlueColor: #4f9cf9;
 }
 
+/* header */
 .header {
   max-height: 92px;
   height: auto;
@@ -29,10 +33,8 @@ body {
     justify-content: space-between;
     align-items: center;
     max-width: var(--maxWidth);
-    /* KEY FIX: Use max-width + width: 100% */
     width: 100%;
-    padding: 16px 24px;
-    /* Adds breathing room on sides */
+    padding: 16px 20px;
     box-sizing: border-box;
 
     .header-logo {
@@ -57,7 +59,6 @@ body {
     }
 
     .nav-bar {
-      /* KEY FIX: Remove fixed width (988.5px), let it flow */
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -77,7 +78,7 @@ body {
         .header-items-inner {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 0px;
           cursor: pointer;
 
           p {
@@ -90,7 +91,6 @@ body {
           }
 
           img {
-            width: 12px;
             /* Adjusted reasonable size for arrow */
             height: auto;
           }
@@ -138,9 +138,80 @@ body {
       }
     }
   }
-}
+  /* --- 1. Hide the Checkbox Trigger --- */
+  .nav-toggle {
+    display: none;
+  }
 
-/* --- Default Desktop Styles --- */
+  /* --- 2. Mobile Menu Styling (Default State: Hidden) --- */
+  .mobile-menu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    background-color: #043873;
+    width: 100%;
+    position: absolute;
+    top: 92px; /* Height of header */
+    left: 0;
+    padding: 20px 0;
+    z-index: 100;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Links Styling */
+  .mobile-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Mobile Buttons Styling */
+  .login-btn-mobile {
+    margin-top: 20px;
+    background-color: #ffe492;
+    color: #043873;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    width: 40%;
+    cursor: pointer;
+  }
+
+  .try-btn-mobile {
+    margin-top: 15px;
+    background-color: #4f9cf9;
+    color: #ffffff;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    width: 40%;
+    cursor: pointer;
+  }
+
+  /* --- 3. THE LOGIC (Show Menu when Checkbox is Checked) --- */
+  /* Selects the .mobile-menu that comes after the checked #nav-toggle */
+  #nav-toggle:checked ~ .mobile-menu {
+    display: flex;
+  }
+
+  /* --- 4. Hide Mobile Menu on Desktop --- */
+  @media screen and (min-width: 1153px) {
+    .mobile-menu,
+    .hamburger-menu,
+    .nav-toggle {
+      display: none !important;
+    }
+  }
+}
 
 /* Initially hide the hamburger menu on desktop */
 .hamburger-menu {
@@ -157,6 +228,58 @@ body {
   border-radius: 2px;
 }
 
+@media screen and (max-width: 768px) {
+  .header .innerHeader .nav-bar {
+    display: none;
+  }
+}
+
+/* Default: Buttons are visible in the menu (for Mobile 0px - 768px) */
+.login-btn-mobile,
+.try-btn-mobile {
+  display: block; /* or flex, depending on your styling */
+}
+@media screen and (min-width: 769px) {
+  .login-btn-mobile,
+  .try-btn-mobile {
+    display: none !important;
+  }
+}
+
+/*desktop 1152px */
+
+@media screen and (max-width: 1152px) {
+  .header .innerHeader .nav-bar .header-buttons {
+    margin-right: 20px;
+  }
+
+  .header .innerHeader .nav-bar .header-items {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    /* Assuming you added the hamburger menu from the last step */
+  }
+
+  /* 3. Ensure header stays properly aligned (Logo Left, Menu Right) */
+  .header .innerHeader {
+    /* Revert to row layout with space-between */
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 24px;
+    width: 100%;
+  }
+}
+
+@media screen and (width >= 1480px) {
+  .innerHeader {
+    max-width: var(--maxWidth) !important;
+    padding: 16px 0px !important;
+  }
+}
+/* header end */
+
 /* container 1 */
 .hero-section {
   width: 100%;
@@ -166,12 +289,18 @@ body {
   /* Padding handles the vertical space instead of fixed height */
   padding: 140px 20px;
   box-sizing: border-box;
+
+  @media screen and (max-width: 1152px) {
+    .hero-section {
+      flex-direction: column;
+    }
+  }
 }
 
 /* --- Main Container --- */
 .hero-container {
   width: 100%;
-  max-width: 1440px; /* Max constraint for large screens */
+  max-width: var(--maxWidth); /* Max constraint for large screens */
   display: flex;
 
   /* 1. DESKTOP DEFAULT: Row Layout (Side by Side) */
@@ -202,6 +331,7 @@ body {
 }
 
 .hero-text-body p {
+  text-align: center;
   color: #ffffff;
   font-size: 18px;
   font-weight: 400;
@@ -302,7 +432,7 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1440px;
+    max-width: var(--maxWidth);
     gap: 60px;
 
     /* Text Content */
@@ -355,7 +485,7 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1440px;
+    max-width: var(--maxWidth);
     gap: 100px;
 
     /* Image Box */
@@ -412,14 +542,15 @@ body {
 
   /* 1. TABLET/SMALL LAPTOP VIEW (Switch to Column) */
   @media screen and (max-width: 1152px) {
-    padding: 80px 20px; /* Reduce outer padding */
-    gap: 100px; /* Reduce gap between the two main sections */
-
+    padding: 100px 20px;
+    gap: 100px;
+    max-height: 1797.67px;
     /* --- SECTION 1 FIX --- */
     .container2-mainBox {
-      flex-direction: column; /* Stack Items */
+      max-width: 728px;
+      max-height: 707px;
+      flex-direction: column;
       text-align: center;
-      /* This gap acts as PADDING between Text and Blue Box */
       gap: 60px;
     }
 
@@ -427,9 +558,13 @@ body {
       align-items: center !important; /* Center the text & button */
     }
 
+    .container2-box-innerBox h1 {
+      font-size: 54px;
+    }
+
     .container2-blankSpace {
-      width: 100%; /* Make box full width */
-      /* Slightly flatter aspect ratio for tablet looks better */
+      max-width: 561px !important;
+      max-height: 349px !important;
       aspect-ratio: 4 / 3;
     }
 
@@ -441,7 +576,8 @@ body {
     }
 
     .container2-mainBox2-designBox img {
-      max-width: 500px; /* Limit image size on tablet */
+      max-width: 454px !important;
+      max-height: 422.67px;
     }
 
     .container2-mainBox2-box-inner {
@@ -496,7 +632,6 @@ body {
   justify-content: center; /* Centers the inner content */
   width: 100%;
   background-color: #043873;
-  /* Replaced fixed height/width with padding for responsiveness */
   padding: 140px 20px;
   box-sizing: border-box;
 
@@ -507,7 +642,7 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1440px; /* Limits width on big screens */
+    max-width: var(--maxWidth); /* Limits width on big screens */
     gap: 98px; /* Space between text and visual box */
 
     /* --- LEFT SIDE: TEXT --- */
@@ -534,6 +669,7 @@ body {
         p {
           line-height: 30px;
           font-size: 18px;
+          letter-spacing: -2%;
           font-weight: 400;
           color: #ffffff;
         }
@@ -541,6 +677,7 @@ body {
 
       button {
         display: flex;
+        padding: 20px 40px;
         width: 171px;
         height: 63px;
         gap: 10px;
@@ -566,7 +703,7 @@ body {
     .container3-mainBox-Box2 {
       flex: 1; /* Takes available space */
       width: 100%;
-      background-color: #ffffff;
+      background-color: #c4defd;
       border-radius: 4px;
       /* Aspect Ratio ensures it keeps the shape (686/479) as it shrinks */
       aspect-ratio: 686 / 479;
@@ -586,22 +723,23 @@ body {
       gap: 60px;
     }
 
-    /* Center the Text Section */
-    .container3-mainBox-Box1 {
-      display: flex;
-      align-items: center !important; /* Centers button */
-      width: 100%;
-    }
-
     /* Adjust Typography */
     .container3-mainBox-Box1 .innerBox h1 {
       font-size: 54px;
     }
 
-    /* Make Visual Box Full Width */
+    .container3-mainBox-Box1 {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 40px !important;
+      align-items: center !important;
+      max-width: 704px;
+      max-height: 268px;
+    }
+
     .container3-mainBox-Box2 {
-      width: 100%;
-      /* Adjust aspect ratio slightly for tablet if needed, or keep same */
+      max-width: 557px !important;
+      max-height: 388.93px;
       aspect-ratio: 4 / 3;
     }
   }
@@ -609,9 +747,9 @@ body {
   /* =========================================
      RESPONSIVE: Mobile (Max 425px)
      ========================================= */
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     padding: 60px 20px;
-
+    height: 810px;
     .container3-mainBox {
       gap: 40px;
     }
@@ -632,14 +770,17 @@ body {
 
     /* Visual Box Height Adjustment */
     .container3-mainBox-Box2 {
-      /* Force a specific height if aspect ratio makes it too tall on mobile */
-      height: 300px;
-      aspect-ratio: unset;
+      max-width: 350px !important;
+      max-height: 250px;
     }
   }
   @media screen and (max-width: 375px) {
     /* 1. Reduce padding to give text more horizontal room */
-    padding: 60px 15px;
+    padding: 80px 16px !important;
+    height: 750px !important  ;
+    .container3-mainBox {
+      gap: 70px;
+    }
 
     .container3-mainBox-Box1 .innerBox h1 {
       /* 2. Force font smaller so "Extension" fits */
@@ -656,8 +797,8 @@ body {
   }
 }
 
-/* c0ntainer 4 */
-/* --- Global Reset --- */
+/* container 4 */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -683,7 +824,7 @@ body {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1440px; /* Constraints width */
+    max-width: var(--maxWidth); /* Constraints width */
     gap: 98px; /* Gap between visual and text */
 
     /* --- LEFT SIDE: BLUE BOX --- */
@@ -757,9 +898,14 @@ body {
      RESPONSIVE: Tablet & Small Laptop (Max 1152px)
      ========================================= */
   @media screen and (max-width: 1152px) {
-    padding: 80px 20px;
+    padding: 140px 20px;
+    .container4 {
+      max-height: 1009.95px;
+    }
     .Box1 {
       display: flex;
+      max-width: 728px;
+      max-height: 272px;
       flex-direction: column;
       align-items: center !important;
     }
@@ -769,10 +915,14 @@ body {
       text-align: center;
       gap: 60px;
     }
+    h1 {
+      font-size: 54px !important;
+    }
 
     /* Adjust Blue Box */
     .empty-box {
-      width: 100%;
+      max-width: 534px !important;
+      max-height: 397.95px;
       aspect-ratio: 4 / 3; /* Standard rectangle */
     }
 
@@ -791,8 +941,8 @@ body {
      RESPONSIVE: Mobile (Max 425px)
      ========================================= */
   @media screen and (max-width: 426px) {
-    padding: 60px 20px;
-
+    padding: 100px 20px;
+    max-height: 860px;
     .mainBox {
       gap: 40px;
     }
@@ -805,12 +955,18 @@ body {
       font-size: 16px;
     }
 
+    .mainBox .Box1 {
+      max-height: 500px;
+    }
+
     /* Full Width Button */
     .Box1 button {
+      max-height: 80px;
       width: 100%;
     }
 
     .empty-box {
+      /* max-width:  ; */
       height: 300px;
       aspect-ratio: unset;
     }
@@ -879,7 +1035,7 @@ body {
   /* --- CARDS WRAPPER --- */
   .mainBox2 {
     width: 100%;
-    max-width: 1440px;
+    max-width: var(--maxWidth);
     display: flex;
     justify-content: center;
 
@@ -1004,10 +1160,12 @@ body {
 
     /* Turn Text White */
     .card-item1 h1,
-    .card-item1 .money,
     .card-item1 .text,
     .card-item2 .list-item {
       color: #ffffff;
+    }
+    .card-item1 .money {
+      color: #ffe492;
     }
 
     /* Turn Icons White */
@@ -1032,10 +1190,12 @@ body {
      RESPONSIVE: TABLET (Max 1024px)
      ========================================= */
   @media screen and (max-width: 1254px) {
+    /* max-height: 1200px; */
+    padding: 140px 20px;
+
     .mainBox1 h1 {
       font-size: 54px;
     }
-
     .mainBox2 .cards {
       display: flex;
       flex-wrap: nowrap;
@@ -1101,10 +1261,6 @@ body {
 
 /* --- CONTAINER 6 --- */
 .container6 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   background-color: #043873;
   padding: 140px 20px;
@@ -1192,31 +1348,55 @@ body {
     }
   }
 
+  @media screen and (max-width: 768px) {
+    .mainbox1 .mainBox1-box1 h1 {
+      font-size: 54px !important;
+    }
+  }
+  @media screen and (min-width: 1152px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   /* =========================================
      RESPONSIVE: Tablet & Small Laptop (Max 1152px)
      ========================================= */
-  @media screen and (max-width: 1152px) {
-    padding: 100px 20px; /* Reduce vertical padding */
-
+  @media screen and (max-width: 1153px) {
+    .container6 {
+      width: 100%;
+      max-height: 701px;
+      padding: 140px 32px;
+      display: flex !important;
+      justify-content: flex-start !important;
+    }
     .mainBox {
       gap: 40px;
+      max-width: 650px !important;
+      max-height: 421px;
+      justify-content: flex-start !important;
     }
 
+    .mainBox .mainbox2 {
+      justify-content: flex-start;
+    }
+    .mainbox1 .mainBox1-box2 p {
+      text-align: left !important;
+    }
     .mainbox1 .mainBox1-box1 h1 {
-      font-size: 54px; /* Smaller Heading */
+      font-size: 64px; /* Smaller Heading */
+      text-align: left !important;
     }
   }
 
   /* =========================================
    RESPONSIVE: Mobile (Max 425px)
    ========================================= */
-  @media screen and (max-width: 425px) {
-    .container6 {
-      padding: 60px 20px;
-    }
-
-    .container6 .mainBox .mainbox1 .mainBox1-box1 h1 {
-      font-size: 36px;
+  @media screen and (max-width: 426px) {
+    height: 766px !important;
+    padding: 100px 16px 140px 16px !important;
+    .mainbox1 .mainBox1-box1 .h1 {
+      font-size: 36px !important;
       line-height: 1.2;
     }
 
@@ -1349,7 +1529,7 @@ body {
 
     .container7-mainBox {
       /* Switch to Column Layout */
-      flex-direction: column;
+      flex-direction: column-reverse;
       text-align: center;
       gap: 60px;
     }
@@ -1367,22 +1547,21 @@ body {
     /* Center Image */
     .container7-rightBox {
       justify-content: center !important;
-      width: 100%;
-
-      img {
-        max-width: 500px; /* Limit image size on tablet */
-      }
+    }
+    .container7-mainBox .container7-rightBox img {
+      max-width: 600px !important;
+      max-height: 320px !important;
     }
   }
 
   /* =========================================
      RESPONSIVE: Mobile (Max 425px)
      ========================================= */
-  @media screen and (max-width: 425px) {
-    padding: 60px 20px;
-
+  @media screen and (max-width: 426px) {
+    padding: 80px 20px;
     .container7-mainBox {
-      gap: 40px;
+      flex-direction: column-reverse !important;
+      gap: 100px;
     }
 
     /* 1. Add !important to force the font size change */
@@ -1634,12 +1813,13 @@ body {
      RESPONSIVE: Tablet & Small Laptop (Max 1152px)
      ========================================= */
   @media screen and (max-width: 1152px) {
-    padding: 100px 20px;
+    padding: 140px 20px;
+    height: 1109px;
 
     /* Switch to Column Layout */
     flex-direction: column;
     text-align: center;
-    gap: 60px;
+    gap: 100px;
 
     /* Center the Text Block */
     .container9-item2 {
@@ -1660,21 +1840,18 @@ body {
   /* =========================================
      RESPONSIVE: Mobile (Max 425px)
      ========================================= */
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     padding: 60px 20px;
-    gap: 40px;
+    gap: 0px;
+    height: 927px;
 
-    .container9-item2 .container9-item2-innerBox h1 {
+    .container9-item2-innerBox h1 {
       font-size: 36px !important;
-    }
-
-    .container9-item2 .container9-item2-innerBox p {
-      font-size: 16px;
     }
 
     /* Full Width Button */
     .container9-item2 button {
-      width: 100%;
+      width: 60%;
     }
   }
 
@@ -1682,15 +1859,20 @@ body {
      RESPONSIVE: Small Mobile (Max 390px)
      ========================================= */
   @media screen and (max-width: 390px) {
-    padding: 60px 15px; /* Tighter padding */
-
+    padding: 80px 15px; /* Tighter padding */
+    height: 870px;
     .container9-item2 .container9-item2-innerBox h1 {
       font-size: 32px !important;
       word-wrap: break-word;
     }
-
-    .container9-item2 .container9-item2-innerBox p {
-      font-size: 14px;
+    .container9-item1 img {
+      max-height: 240px !important;
+    }
+    .container9-item1 {
+      max-height: 300px;
+    }
+    .container9-item2 {
+      max-height: 550px;
     }
     .container9-item2 button {
       width: 50%;
@@ -2022,13 +2204,25 @@ body {
       }
     }
   }
-
+  /* max width 768 */
+  @media screen and (max-width: 768px) {
+    padding: 100px 30px 0px 10px;
+    /* align-items: flex-start; */
+    justify-content: flex-start !important;
+    .container11-item1 {
+      text-align: left;
+    }
+    .container11-item {
+      align-items: flex-start;
+    }
+    .container11-item-icons {
+      justify-content: flex-start !important;
+    }
+  }
   /* =========================================
      RESPONSIVE: Tablet & Small Laptop (Max 1152px)
      ========================================= */
   @media screen and (max-width: 1152px) {
-    padding: 100px 20px;
-
     .container11-item {
       gap: 30px;
     }
@@ -2047,32 +2241,32 @@ body {
   /* =========================================
      RESPONSIVE: Mobile (Max 425px)
      ========================================= */
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     padding: 60px 20px;
 
     /* Typography Scaling */
-    .container11-item .container11-item1 h1 {
-      font-size: 36px;
+    .container11-item1 h1 {
+      font-size: 36px !important;
     }
 
-    .container11-item .container11-item1 p,
+    .container11-item1 p,
     .contact-sales {
-      font-size: 18px;
+      font-size: 18px !important;
     }
 
     /* Button takes full width for easier tapping */
     .container11-item button {
-      width: 50%;
+      max-width: 60%;
     }
 
     /* Icons Adjustment */
     .container11-item-icons {
-      gap: 20px; /* Closer together on mobile */
+      gap: 20px !important; /* Closer together on mobile */
     }
 
     .container11-item-icons img {
-      width: 45px;
-      height: 45px;
+      max-width: 45px !important;
+      max-height: 46px !important;
     }
   }
 
@@ -2273,9 +2467,8 @@ body {
     }
   }
 
-  /* =========================================
-     RESPONSIVE: Tablet (Max 1152px)
-     ========================================= */
+  /* 
+     RESPONSIVE: Tablet (Max 1152px) */
   @media screen and (max-width: 1152px) {
     padding: 80px 20px;
 
@@ -2313,27 +2506,27 @@ body {
 
   /* =========================================
    RESPONSIVE: Tablet & Mobile (Max 768px)
-   FIX: Forces the Grid into 1 Vertical Column
    ========================================= */
   @media screen and (max-width: 992px) {
     /* Covers Tablet (768px) */
 
     .container12 {
       padding: 80px 20px;
+      align-items: flex-start;
     }
 
     /* 1. Force the Main Grid to 1 Column (Stacked) */
     .container12-mainBox .container12-mainBox1 {
       display: flex; /* Switch from Grid to Flex for better control in column mode */
       flex-direction: column;
-      align-items: center; /* Center everything */
-      text-align: center;
+      align-items: flex-start; /* Center everything */
+      text-align: left;
       gap: 60px;
     }
 
     /* 2. Center the Logo and Description */
     .container12-mainBox .container12-mainBox1 .mainBox1-item1 {
-      align-items: center;
+      align-items: flex-start;
       width: 100%;
     }
 
@@ -2344,34 +2537,40 @@ body {
     /* 3. Center the Links Sections */
     .container12-mainBox .container12-mainBox1 .mainBox-item-common {
       width: 100%;
-      align-items: center;
+      align-items: left;
     }
 
     /* 4. Center the CTA (Try It Today) */
     .container12-mainBox .container12-mainBox1 .mainBox5-item5 {
       width: 100%;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .container12-mainBox .container12-mainBox1 .mainBox5-item5 button {
-      width: 50%; /* Full width button for easier tapping */
+      width: 200px; /* Full width button for easier tapping */
       max-width: 350px; /* But don't let it get crazy wide */
     }
 
     /* --- BOTTOM SECTION (Copyright & Socials) --- */
     .container12-mainBox .container12-mainBox2 {
       flex-direction: column;
+      align-items: flex-start;
       gap: 40px;
     }
 
     .container12-mainBox .container12-mainBox2 .mainBox2-left {
       flex-direction: column;
+      align-items: flex-start;
       gap: 20px;
+    }
+    .mainBox5-item5 p {
+      max-width: 50%;
+      text-align: left;
     }
 
     .container12-mainBox .container12-mainBox2 .mainBox2-left .legal-links {
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 15px;
     }
   }
@@ -2379,58 +2578,117 @@ body {
   /* =========================================
    RESPONSIVE: Small Mobile (Max 425px)
    ========================================= */
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     .container12 {
-      padding: 60px 20px;
+      padding: 60px 20px !important;
+      align-items: center !important;
     }
-    .container12-mainBox .container12-mainBox1 .mainBox5-item5 button {
-      width: 75% !important;
+    .container12-mainBox .container12-mainBox1 {
+      display: flex; /* Switch from Grid to Flex for better control in column mode */
+      flex-direction: column;
+      align-items: center !important; /* Center everything */
+      text-align: center !important;
+      gap: 40px;
+    }
+    .container12-mainBox .container12-mainBox1 .mainBox1-item1 {
+      align-items: center !important;
+      width: 100%;
     }
 
-    /* Ensure no horizontal overflow */
-    .container12-mainBox .container12-mainBox1 {
+    .container12-mainBox .container12-mainBox1 .mainBox1-item1 .desc {
+      max-width: 100%; /* Use full width */
+    }
+
+    /* 3. Center the Links Sections */
+    .container12-mainBox .container12-mainBox1 .mainBox-item-common {
       width: 100%;
+      align-items: left !important;
+    }
+
+    /* 4. Center the CTA (Try It Today) */
+    .container12-mainBox .container12-mainBox1 .mainBox5-item5 {
+      width: 100%;
+      align-items: center !important;
+    }
+
+    .container12-mainBox .container12-mainBox1 .mainBox5-item5 button {
+      max-width: 200px !important;
+      max-width: 350px;
+    }
+
+    /* --- BOTTOM SECTION (Copyright & Socials) --- */
+    .container12-mainBox .container12-mainBox2 {
+      flex-direction: column;
+      align-items: center !important;
+      gap: 40px;
+    }
+
+    .container12-mainBox .container12-mainBox2 .mainBox2-left {
+      flex-direction: column;
+      align-items: center !important;
+      gap: 20px;
+    }
+    .mainBox5-item5 p {
+      max-width: 50%;
+      text-align: center;
+    }
+
+    .container12-mainBox .container12-mainBox2 .mainBox2-left .legal-links {
+      flex-direction: column;
+      align-items: center !important;
+      gap: 15px;
     }
   }
 }
+
+/* container1 media query */
 
 /* (Max-width 768px) --- */
 @media screen and (max-width: 768px) {
   .header .innerHeader .nav-bar {
     display: none;
   }
+  /* updated */
+  /* 1. */
   .hero-section {
-    padding: 60px 20px;
+    padding: 140px 20px 100px 20px;
+    max-height: 1151px;
   }
-
+  /* 2. */
   .hero-container {
-    /* 2. SWITCH TO COLUMN (Stack vertically) */
+    max-height: 811px;
+    max-width: 728px;
     flex-direction: column;
     text-align: center;
-    gap: 60px;
+    gap: 100px;
   }
-
+  /* 3. */
   .hero-text-content {
-    /* On mobile/tablet, text takes full width */
+    max-height: 344px;
+    align-items: center;
     max-width: 100%;
-    align-items: center; /* Center the button */
   }
-
+  /* 4. */
   .hero-text-body h2 {
-    font-size: 42px; /* Smaller font */
+    font-size: 54px;
+    padding: 0px 40px 0px 40px;
+    text-align: center;
   }
-
+  /* 5. */
   .hero-visual {
-    /* On mobile/tablet, blue box takes full width */
-    width: 100%;
-    max-width: 100%;
-    /* We can reduce aspect ratio slightly if it looks too tall on mobile */
-    aspect-ratio: 4/3;
+    /* width: 100%; */
+    max-width: 550px;
+    aspect-ratio: 4 / 3;
+    max-height: 367px;
   }
 }
 
 /* mobile screen 425px */
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
+  .hero-section {
+    padding: 80px 20px 80px 20px;
+  }
+
   .hero-container {
     display: flex;
     flex-direction: column;
@@ -2440,31 +2698,5 @@ body {
   }
   .hero-btn {
     width: 100%; /* Full width button */
-  }
-}
-
-/*desktop 1152px */
-
-@media screen and (max-width: 1152px) {
-  .header .innerHeader .nav-bar .header-buttons {
-    margin-right: 20px;
-  }
-
-  .header .innerHeader .nav-bar .header-items {
-    display: none;
-  }
-
-  .hamburger-menu {
-    display: flex;
-    /* Assuming you added the hamburger menu from the last step */
-  }
-
-  /* 3. Ensure header stays properly aligned (Logo Left, Menu Right) */
-  .header .innerHeader {
-    /* Revert to row layout with space-between */
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 20px 24px;
-    width: 100%;
   }
 }
