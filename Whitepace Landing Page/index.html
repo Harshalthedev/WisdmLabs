@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js"></script>
   </head>
 
   <body>
@@ -206,8 +207,12 @@
       </div>
 
       <div class="mainBox2">
+        <input type="radio" name="pricing" id="plan1" />
+        <input type="radio" name="pricing" id="plan2" checked />
+        <input type="radio" name="pricing" id="plan3" />
+
         <div class="cards">
-          <div class="card" onclick="selectCard(this, event)">
+          <label for="plan1" class="card">
             <div class="card-item1">
               <h1>Free</h1>
               <p class="money">$0</p>
@@ -240,21 +245,21 @@
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Customize Home dashboard
+                />Customize Home dashboard and access extra widgets
               </div>
               <div class="list-item">
                 <img
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Connect Google Calendar
+                />Connect primary Google Calendar account
               </div>
               <div class="list-item">
                 <img
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Add due dates & reminders
+                />Add due dates, reminders, and notifications to your tasks
               </div>
             </div>
             <button>
@@ -264,9 +269,9 @@
                 alt=""
               />
             </button>
-          </div>
+          </label>
 
-          <div class="card" onclick="selectCard(this, event)">
+          <label for="plan2" class="card">
             <div class="card-item1">
               <h1>Personal</h1>
               <p class="money">$11.99</p>
@@ -299,21 +304,21 @@
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Customize Home dashboard
+                />Customize Home dashboard and access extra widgets
               </div>
               <div class="list-item">
                 <img
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Connect Google Calendar
+                />Connect primary Google Calendar account
               </div>
               <div class="list-item">
                 <img
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Add due dates & reminders
+                />Add due dates, reminders, and notifications to your tasks
               </div>
             </div>
             <button>
@@ -323,9 +328,9 @@
                 alt=""
               />
             </button>
-          </div>
+          </label>
 
-          <div class="card" onclick="selectCard(this, event)">
+          <label for="plan3" class="card">
             <div class="card-item1">
               <h1>Organization</h1>
               <p class="money">$49.99</p>
@@ -358,21 +363,21 @@
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Customize Home dashboard
+                />Customize Home dashboard and access extra widgets
               </div>
               <div class="list-item">
                 <img
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Connect Google Calendar
+                />Connect primary Google Calendar account
               </div>
               <div class="list-item">
                 <img
                   class="check-icon"
                   src="./images/right-tick.svg"
                   alt=""
-                />Add due dates & reminders
+                />Add due dates, reminders, and notifications to your tasks
               </div>
             </div>
             <button>
@@ -382,7 +387,7 @@
                 alt=""
               />
             </button>
-          </div>
+          </label>
         </div>
       </div>
     </div>
@@ -666,66 +671,5 @@
         </div>
       </div>
     </footer>
-
-    <!-- Script -->
-    <script>
-      function selectCard(clickedCard, event) {
-        // 1. Stop the click from bubbling up to the document (prevents immediate deselect)
-        event.stopPropagation();
-
-        // 2. Remove 'active' class from ALL cards
-        const allCards = document.querySelectorAll(".card");
-        allCards.forEach((card) => {
-          // If we want to toggle the same card off by clicking it again:
-          if (card !== clickedCard) {
-            card.classList.remove("active");
-          }
-        });
-
-        // 3. Toggle 'active' on the clicked card
-        clickedCard.classList.toggle("active");
-      }
-
-      // // 4. Global click listener to deselect when clicking "somewhere else"
-      // document.addEventListener("click", function () {
-      //   const allCards = document.querySelectorAll(".card");
-      //   allCards.forEach((card) => card.classList.remove("active"));
-      // });
-
-      function toggleCard(clickedCard, event) {
-        // 1. Stop the click from bubbling to the window (prevents immediate reset)
-        event.stopPropagation();
-
-        // 2. Get all cards
-        const allCards = document.querySelectorAll(".cards");
-
-        // 3. Reset ALL cards to Default (Blue background, White Quote)
-        allCards.forEach((card) => {
-          card.classList.remove("active"); // Removes white background
-
-          // Reset icon to White-Quote (because background is Blue)
-          const img = card.querySelector(".quote-icon");
-          if (img) img.src = "./images/White-Quote.svg";
-        });
-
-        // 4. Set ONLY the clicked card to Active (White background, Blue Quote)
-        clickedCard.classList.add("active");
-
-        const activeImg = clickedCard.querySelector(".quote-icon");
-        if (activeImg) activeImg.src = "./images/Blue-Quote.svg";
-      }
-
-      // 5. Global Listener: If user clicks anywhere else, reset everything
-      document.addEventListener("click", function () {
-        const allCards = document.querySelectorAll(".cards");
-        allCards.forEach((card) => {
-          card.classList.remove("active"); // Back to Blue
-
-          // Back to White Quote
-          const img = card.querySelector(".quote-icon");
-          if (img) img.src = "./images/White-Quote.svg";
-        });
-      });
-    </script>
   </body>
 </html>
