@@ -331,7 +331,7 @@ body {
 }
 
 .hero-text-body p {
-  text-align: center;
+  text-align: left;
   color: #ffffff;
   font-size: 18px;
   font-weight: 400;
@@ -1002,9 +1002,9 @@ body {
   width: 100%;
   background-color: #ffffff;
   padding: 140px 20px;
-  gap: 80px;
+  gap: 80px !important;
 
-  /* --- HEADER SECTION --- */
+  /* --- Header Section --- */
   .mainBox1 {
     display: flex;
     flex-direction: column;
@@ -1021,7 +1021,6 @@ body {
       font-weight: 700;
       line-height: 1.1;
     }
-
     p {
       margin: 0;
       color: #212529;
@@ -1032,12 +1031,17 @@ body {
     }
   }
 
-  /* --- CARDS WRAPPER --- */
+  /* --- Cards Wrapper --- */
   .mainBox2 {
     width: 100%;
-    max-width: var(--maxWidth);
+    max-width: 1440px;
     display: flex;
     justify-content: center;
+
+    /* Hide Radio Inputs */
+    input[type="radio"] {
+      display: none;
+    }
 
     .cards {
       display: flex;
@@ -1049,85 +1053,76 @@ body {
     }
   }
 
-  /* --- INDIVIDUAL CARD STYLING --- */
+  /*INDIVIDUAL CARD STYLING (Default White)
+       */
   .card {
-    flex: 1;
-    min-width: 300px;
+    flex: 1; /* Desktop: Share space */
+    max-width: 390px;
     border-radius: 10px;
     border: 1px solid #ffe492;
     background-color: #ffffff;
-    padding: 40px 44px;
+    padding: 40px 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 25px;
+    gap: 35px;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
 
-    /* Card Header */
-    .card-item1 {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-
-      h1 {
-        font-size: 24px;
-        font-weight: 600;
-        color: #212529;
-        margin: 0;
-        transition: color 0.3s;
-      }
-
-      .money {
-        font-size: 36px;
-        font-weight: 700;
-        color: #212529;
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        transition: color 0.3s;
-      }
-
-      .text {
-        font-size: 18px;
-        font-weight: 500;
-        color: #212529;
-        margin: 0;
-        transition: color 0.3s;
-      }
+    /* Default Text Colors (Black) */
+    .card-item1 h1,
+    .card-item1 .text,
+    .card-item2 .list-item {
+      color: #212529;
+      transition: color 0.3s;
+    }
+    .card-item1 .money {
+      color: #212529;
+      transition: color 0.3s;
+      font-size: 36px;
+      font-weight: 700;
+      font-family: "Inter", sans-serif;
     }
 
-    /* Card List */
+    .card-item1 {
+      padding-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .card-item2 {
       display: flex;
       flex-direction: column;
-      gap: 28px;
-
-      .list-item {
-        display: flex;
-        gap: 19px;
-        align-items: flex-start;
-        font-size: 16px;
-        font-weight: 400;
-        color: #212529;
-        line-height: 20px;
-        transition: color 0.3s;
-
-        .check-icon {
-          width: 18px;
-          height: 18px;
-          /* Default Black Filter */
-          filter: invert(13%) sepia(10%) saturate(692%) hue-rotate(169deg)
-            brightness(93%) contrast(88%);
-          transition: filter 0.3s;
-        }
-      }
+      gap: 20px;
     }
 
-    /* Button */
+    .list-item {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    /* Default Icon (Black) */
+    .check-icon,
+    .btn-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      filter: invert(13%) sepia(10%) saturate(692%) hue-rotate(169deg)
+        brightness(93%) contrast(88%);
+      transition: filter 0.3s;
+    }
+
+    /* Default Button (White) */
     button {
+      margin-bottom: 20px;
       margin-top: 15px;
-      width: 166px;
-      height: 51px;
+      width: 170px;
+      height: 55px;
       border-radius: 8px;
       border: 1px solid #ffe492;
       background-color: #ffffff;
@@ -1140,25 +1135,59 @@ body {
       gap: 10px;
       cursor: pointer;
       transition: all 0.3s;
-
-      .btn-icon {
-        width: 14px;
-        height: 14px;
-        transition: filter 0.3s;
-      }
     }
   }
 
-  /* --- ACTIVE/HOVER STATES --- */
-  .card.active,
+  /* (Hover OR Click)
+  
+*/
   .card:hover {
     background-color: #043873;
-    transform: scale(1.05);
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(1.07);
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
     border: none;
-    z-index: 2;
+    z-index: 20;
 
-    /* Turn Text White */
+    .card-item1 h1,
+    .card-item1 .text,
+    .card-item2 .list-item {
+      color: #ffffff;
+    }
+
+    .card-item1 .money {
+      color: #ffe492;
+    }
+
+    /* Golden Check Icon */
+    .check-icon {
+      filter: invert(87%) sepia(26%) saturate(838%) hue-rotate(321deg)
+        brightness(103%) contrast(101%);
+    }
+
+    /* White Arrow */
+    .btn-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    button {
+      background-color: #4f9cf9;
+      color: #ffffff;
+      border: none;
+      width: 60%;
+    }
+  }
+
+  /* 2. DEFAULT MIDDLE CARD STATE (Desktop Only Logic):
+   If the user is NOT hovering over the container (.mainBox2),
+   AND Radio #2 is checked, apply styles to Card #2.
+*/
+  .mainBox2:not(:hover) input#plan2:checked ~ .cards label[for="plan2"] {
+    background-color: #043873;
+    transform: scale(1.07);
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+    border: none;
+    z-index: 10;
+
     .card-item1 h1,
     .card-item1 .text,
     .card-item2 .list-item {
@@ -1167,94 +1196,194 @@ body {
     .card-item1 .money {
       color: #ffe492;
     }
-
-    /* Turn Icons White */
     .check-icon {
+      filter: invert(87%) sepia(26%) saturate(838%) hue-rotate(321deg)
+        brightness(103%) contrast(101%);
+    }
+    .btn-icon {
       filter: brightness(0) invert(1);
     }
-
-    /* Style Button */
     button {
       background-color: #4f9cf9;
       color: #ffffff;
       border: none;
-      width: 50%;
+      width: 60%;
+    }
+  }
 
+  /* 3. MOBILE/TOUCH STATE (Alternative to @media hover:none):
+   This simply applies the active style to ANY checked radio button.
+   This runs alongside the hover logic but is essential for mobile taps.
+*/
+  input#plan1:checked ~ .cards label[for="plan1"],
+  input#plan2:checked ~ .cards label[for="plan2"],
+  input#plan3:checked ~ .cards label[for="plan3"] {
+    /* We use a media query here to ensure this only dominates on touch screens 
+     or when not conflicting with the hover logic above */
+  }
+
+  @media (hover: none) {
+    input#plan1:checked ~ .cards label[for="plan1"],
+    input#plan2:checked ~ .cards label[for="plan2"],
+    input#plan3:checked ~ .cards label[for="plan3"] {
+      background-color: #043873;
+      transform: scale(1.07);
+      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+      border: none;
+      z-index: 10;
+
+      .card-item1 h1,
+      .card-item1 .text,
+      .card-item2 .list-item {
+        color: #ffffff;
+      }
+      .card-item1 .money {
+        color: #ffe492;
+      }
+      .check-icon {
+        filter: invert(87%) sepia(26%) saturate(838%) hue-rotate(321deg)
+          brightness(103%) contrast(101%);
+      }
       .btn-icon {
         filter: brightness(0) invert(1);
+      }
+      button {
+        background-color: #4f9cf9;
+        color: #ffffff;
+        border: none;
+        width: 60%;
       }
     }
   }
 
-  /* =========================================
-     RESPONSIVE: TABLET (Max 1024px)
-     ========================================= */
-  @media screen and (max-width: 1254px) {
-    /* max-height: 1200px; */
-    padding: 140px 20px;
-
-    .mainBox1 h1 {
-      font-size: 54px;
-    }
-    .mainBox2 .cards {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 20px;
-      justify-content: flex-start;
-      padding: 20px 15%; /* Buffer padding */
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    .mainBox2 .cards::-webkit-scrollbar {
-      display: none;
-    }
-
-    .card {
-      min-width: 70%;
-      max-width: 70%;
-      transform: none !important;
-      scroll-snap-align: center;
-    }
-
-    .card.active {
-      transform: none !important;
-    }
-
-    .card button {
-      width: 50%;
-    }
-  }
-
-  /* =========================================
-     RESPONSIVE: MOBILE (Max 426px)
-     ========================================= */
-  @media screen and (max-width: 426px) {
-    padding: 60px 0;
+  /* 
+         RESPONSIVE: TABLET (Max 1152px)*/
+  @media screen and (max-width: 1152px) {
+    /* .container5 { */
+    padding: 100px 0; /* Full width for scroll */
+    gap: 60px;
+    /* } */
 
     .mainBox1 {
       padding: 0 20px;
     }
+    .mainBox1 h1 {
+      font-size: 54px;
+    }
 
+    /* Scroll Container */
+    .mainBox2 .cards {
+      display: flex;
+      flex-wrap: nowrap; /* Force single line */
+      overflow-x: auto; /* Enable scroll */
+      scroll-snap-type: x mandatory; /* Snap logic */
+      gap: 20px;
+      justify-content: flex-start;
+
+      /* PADDING: 15% Left/Right + 70% Card = 100% 
+             This centers the active card */
+      padding: 40px 15%;
+
+      -ms-overflow-style: none; /* Hide Scrollbar IE */
+      scrollbar-width: none; /* Hide Scrollbar Firefox */
+    }
+    .mainBox2 .cards::-webkit-scrollbar {
+      display: none; /* Hide Scrollbar Chrome */
+    }
+
+    /* Card Sizing */
+    .card {
+      min-width: 99%;
+      max-width: 100%;
+      scroll-snap-align: center;
+      /* Disable hover transform on touch to prevent glitching */
+      transform: none !important;
+    }
+
+    .card button {
+      width: 60%;
+    }
+  }
+  @media screen and (max-width: 390px) {
+    .card-item1 h1 {
+      font-size: 24px !important;
+    }
+    .card {
+      padding: 20px 10px !important;
+    }
+    .mainBox2 .cards {
+      padding: 20px 15px !important;
+    }
+  }
+
+  /*RESPONSIVE: MOBILE (Max 480px - Covers 390, 425)*/
+  @media screen and (max-width: 480px) {
+    .container5 {
+      gap: 40px;
+    }
     .mainBox1 h1 {
       font-size: 36px;
     }
 
     .mainBox2 .cards {
-      padding: 20px 20px; /* Remove buffer */
+      /* Smaller gap for mobile */
       gap: 20px;
+      /* Adjust padding so card takes up most of screen */
+      padding: 20px 7.5%;
     }
 
     .card {
-      min-width: 100%;
-      max-width: 100%;
+      /* 85vw lets the user see a 'peek' of the next card, 
+             indicating it is scrollable. Much better UX than 100%. */
+      min-width: 85vw;
+      max-width: 85vw;
       scroll-snap-align: center;
+      padding: 30px 24px; /* Reduce internal padding */
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 1154px) {
+    /* .container5 { */
+    padding: 100px 0; /* Full width for scroll */
+    gap: 60px;
+    /* } */
+
+    .mainBox1 {
+      padding: 0 20px;
+    }
+    .mainBox1 h1 {
+      font-size: 54px;
+    }
+
+    /* Scroll Container */
+    .mainBox2 .cards {
+      display: flex;
+      flex-wrap: nowrap; /* Force single line */
+      overflow-x: auto; /* Enable scroll */
+      scroll-snap-type: x mandatory; /* Snap logic */
+      gap: 20px;
+      justify-content: flex-start;
+
+      /* PADDING: 15% Left/Right + 70% Card = 100% 
+             This centers the active card */
+      padding: 40px 15%;
+
+      -ms-overflow-style: none; /* Hide Scrollbar IE */
+      scrollbar-width: none; /* Hide Scrollbar Firefox */
+    }
+    .mainBox2 .cards::-webkit-scrollbar {
+      display: none; /* Hide Scrollbar Chrome */
+    }
+
+    /* Card Sizing */
+    .card {
+      min-width: 75%;
+      scroll-snap-align: center;
+      /* Disable hover transform on touch to prevent glitching */
+      transform: none !important;
     }
 
     .card button {
-      width: 70% !important;
+      width: 60%;
     }
   }
 }
@@ -1888,7 +2017,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 60px;
-  /* Fluid Padding */
   padding: 140px 20px;
 
   /* --- HEADER (MainBox1) --- */
@@ -1901,7 +2029,7 @@ body {
       text-align: center;
       margin: 0;
       color: #212529;
-      font-size: 72px; /* Requirement 3 */
+      font-size: 72px;
       font-weight: 700;
       letter-spacing: -2%;
       line-height: 1.1;
@@ -1914,7 +2042,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1480px; /* Requirement 1: Stop growing at 1440px+ */
+    max-width: 1480px;
 
     .mainBox2-box {
       display: flex;
@@ -1922,13 +2050,13 @@ body {
       justify-content: center;
       gap: 32px;
       width: 100%;
-      align-items: stretch; /* Ensures equal height cards */
+      align-items: stretch;
     }
   }
 
   /* --- INDIVIDUAL CARD STYLING --- */
   .cards {
-    flex: 1; /* Desktop: Share space equally */
+    flex: 1;
     min-width: 300px;
     display: flex;
     flex-direction: column;
@@ -1936,9 +2064,11 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
     padding: 60px 40px;
+
+    /* DEFAULT STATE: Sky Blue Background */
     background-color: #4f9cf9;
     cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition */
+    transition: all 0.3s ease;
 
     /* Text Section */
     .box-item1 {
@@ -1949,20 +2079,23 @@ body {
       img {
         width: 86px;
         height: auto;
+        /* Default: Turn icon White */
+        filter: brightness(0) invert(1);
+        transition: filter 0.3s ease;
       }
 
       .text {
-        font-size: 18px; /* Requirement 3 */
+        font-size: 18px;
         font-weight: 400;
         line-height: 30px;
-        color: #ffffff;
+        color: #ffffff; /* Default: White */
         transition: color 0.3s ease;
       }
 
       .horizontal-line {
         width: 100%;
         height: 1px;
-        background-color: #ffffff;
+        background-color: #ffffff; /* Default: White */
         margin-top: 20px;
         transition: background-color 0.3s ease;
       }
@@ -1990,7 +2123,7 @@ body {
         .name {
           font-size: 24px;
           font-weight: 600;
-          color: #ffffff;
+          color: #ffffff; /* Default: White */
           transition: color 0.3s ease;
         }
 
@@ -1998,28 +2131,46 @@ body {
           font-size: 16px;
           line-height: 1.4;
           font-weight: 400;
-          color: #ffffff;
+          color: #ffffff; /* Default: White */
           transition: color 0.3s ease;
         }
       }
     }
   }
 
-  .cards.active {
-    background-color: #ffffff !important; /* Turns White */
-    transform: scale(1.02); /* Optional: grow effect */
+  /* --- HOVER STATE --- */
+  .cards:hover {
+    background-color: #ffffff; /* Card turns White */
+    transform: scale(1.02);
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
 
-    /* Turn Text Black */
-    .text,
-    .name,
-    .name-description {
-      color: #212529 !important;
+    /* FIX: We target the specific nested containers (.box-item1, etc.)
+       This ensures these rules are "stronger" than the default rules.
+    */
+
+    .box-item1 {
+      img {
+        filter: brightness(0); /* Icon turns Black */
+      }
+
+      .text {
+        color: #212529; /* Text turns Black */
+      }
+
+      .horizontal-line {
+        background-color: #212529; /* Line turns Black */
+      }
     }
 
-    /* Turn Line Black */
-    .horizontal-line {
-      background-color: #212529 !important;
+    .box-item2 {
+      .inner-item {
+        .name {
+          color: #212529; /* Name turns Black */
+        }
+        .name-description {
+          color: #212529; /* Description turns Black */
+        }
+      }
     }
   }
 
@@ -2042,8 +2193,7 @@ body {
   }
 
   /* =========================================
-     RESPONSIVE: Tablet (Max 1152px - Covers iPad)
-     Requirement 8: Horizontal Slide
+     RESPONSIVE: Tablet (Max 1152px)
      ========================================= */
   @media screen and (max-width: 1152px) {
     padding: 100px 20px;
@@ -2052,19 +2202,14 @@ body {
       font-size: 54px;
     }
 
-    /* SCROLL CONTAINER */
     .container10-item2 .mainBox2-box {
       display: flex;
-      flex-wrap: nowrap; /* Force horizontal line */
-      overflow-x: auto; /* Enable scroll */
+      flex-wrap: nowrap;
+      overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 20px;
       justify-content: flex-start;
-
-      /* Buffer padding allows centering 1st/last cards */
       padding: 20px 15%;
-
-      /* Hide Scrollbar */
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
@@ -2073,22 +2218,35 @@ body {
       display: none;
     }
 
-    /* CARD SIZING */
     .cards {
-      /* 70% width allows next card to be seen peeking */
       min-width: 70%;
       max-width: 70%;
       scroll-snap-align: center;
-      transform: none !important; /* Disable hover scale on touch */
+      transform: none !important;
     }
   }
 
+  @media screen and (max-width: 390px) {
+    .cards .box-item2 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .cards .box-item2 .inner-item .name {
+      font-size: 18px;
+    }
+    .cards .box-item2 .inner-item {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
   /* =========================================
      RESPONSIVE: Mobile (Max 425px)
-     Requirement 7: Single Card Scroll
      ========================================= */
   @media screen and (max-width: 426px) {
-    padding: 60px 0; /* Remove outer padding */
+    padding: 60px 0;
 
     .container10-item1 h1 {
       font-size: 36px;
@@ -2096,11 +2254,10 @@ body {
     }
 
     .container10-item2 .mainBox2-box {
-      padding: 20px 20px; /* Standard padding inside scroll area */
+      padding: 20px 20px;
       gap: 20px;
     }
 
-    /* Force 100% Width */
     .cards {
       min-width: 100%;
       max-width: 100%;
@@ -2647,6 +2804,10 @@ body {
 @media screen and (max-width: 768px) {
   .header .innerHeader .nav-bar {
     display: none;
+  }
+  .hero-text-body p {
+    text-align: center !important;
+    font-size: 18px;
   }
   /* updated */
   /* 1. */
