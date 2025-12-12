@@ -41,7 +41,6 @@ body {
       display: flex;
       gap: 10px;
       align-items: center;
-      /* Prevent logo from shrinking */
       flex-shrink: 0;
 
       img {
@@ -74,7 +73,6 @@ body {
         /* Uniform spacing between links */
         align-items: center;
 
-        /* Corrected class name from header-inner-items to header-items-inner */
         .header-items-inner {
           display: flex;
           align-items: center;
@@ -180,7 +178,7 @@ body {
     border-radius: 8px;
     font-weight: 700;
     font-size: 16px;
-    width: 40%;
+    width: 50%;
     cursor: pointer;
   }
 
@@ -193,7 +191,7 @@ body {
     border-radius: 8px;
     font-weight: 700;
     font-size: 16px;
-    width: 40%;
+    width: 70%;
     cursor: pointer;
   }
 
@@ -312,14 +310,13 @@ body {
 
 /* --- Left Side: Text Box --- */
 .hero-text-content {
-  /* Flex: 1 allows it to shrink/grow sharing space with the blue box */
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 60px;
   max-width: 656px; /* It won't get wider than this */
-  min-width: 0; /* Important CSS trick to allow flex items to shrink below content size if needed */
+  min-width: 0; 
 }
 
 .hero-text-body h2 {
@@ -368,24 +365,11 @@ body {
   border-radius: 4px;
   max-width: 824px; /* It won't get wider than this */
 
-  /* Aspect Ratio is key here. 
-       It keeps the box shape (Rectangle) even when it shrinks at 1152px */
   aspect-ratio: 824 / 549;
   height: auto;
 }
 
 /* container 2 */
-
-/* --- Global Reset --- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Inter", sans-serif;
-}
 
 /* --- MAIN WRAPPER --- */
 .container2 {
@@ -394,9 +378,7 @@ body {
   align-items: center;
   width: 100%;
   background-color: #ffffff;
-  /* Padding: Top/Bottom 140px, Left/Right 20px (prevents edge touching) */
   padding: 140px 20px;
-  /* Space between the "Project Management" and "Work Together" sections */
   gap: 160px;
 
   /* --- SHARED BUTTON STYLES --- */
@@ -423,9 +405,9 @@ body {
     }
   }
 
-  /* =========================================
+  /* 
      SECTION 1: Project Management
-     ========================================= */
+      */
   .container2-mainBox {
     display: flex;
     flex-direction: row; /* Side by side on Desktop */
@@ -453,6 +435,27 @@ body {
           font-weight: 700;
           color: #212529;
           line-height: 1.1;
+          .highlight-design {
+            position: relative; /* Anchors the image to this word */
+            display: inline-block; /* Ensures the width matches the word */
+            z-index: 1; /* Ensures text sits ON TOP of the image */
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 5%;
+              width: 145%; /* Stretches the image across the whole word */
+
+              height: 70px;
+
+              bottom: -13px;
+
+              background-image: url("./images/header-design.svg");
+              background-repeat: no-repeat;
+              background-size: 100% 100%; 
+              z-index: -1; /* Puts the image BEHIND the text */
+            }
+          }
         }
 
         p {
@@ -476,9 +479,9 @@ body {
     }
   }
 
-  /* =========================================
+  /* 
      SECTION 2: Work Together
-     ========================================= */
+      */
   .container2-mainBox2 {
     display: flex;
     flex-direction: row; /* Side by side on Desktop */
@@ -520,6 +523,27 @@ body {
           font-weight: 700;
           color: #212529;
           line-height: 1.1;
+          .highlight-designs {
+            position: relative; /* Anchors the image to this word */
+            display: inline-block; /* Ensures the width matches the word */
+            z-index: 1; /* Ensures text sits ON TOP of the image */
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 5%;
+              width: 145%; /* Stretches the image across the whole word */
+
+              height: 70px !important;
+
+              bottom: -13px;
+
+              background-image: url("./images/header-design.svg");
+              background-repeat: no-repeat;
+              background-size: 100% 100%; /* or 'contain' depending on image shape */
+              z-index: -1; /* Puts the image BEHIND the text */
+            }
+          }
         }
 
         p {
@@ -536,11 +560,9 @@ body {
     }
   }
 
-  /* =========================================
+  /* 
      RESPONSIVE: Tablet & Mobile (Max 1152px)
-     ========================================= */
-
-  /* 1. TABLET/SMALL LAPTOP VIEW (Switch to Column) */
+      */
   @media screen and (max-width: 1152px) {
     padding: 100px 20px;
     gap: 100px;
@@ -558,8 +580,13 @@ body {
       align-items: center !important; /* Center the text & button */
     }
 
-    .container2-box-innerBox h1 {
-      font-size: 54px;
+    .highlight-design {
+      &::after {
+        left: 0% !important;
+        width: 150% !important; /* Stretches the image across the whole word */
+        height: 60px !important;
+        bottom: -15px !important;
+      }
     }
 
     .container2-blankSpace {
@@ -609,6 +636,16 @@ body {
     /* Adjust Section 2 */
     .container2-mainBox2 {
       gap: 40px;
+    }
+    .highlight-designs {
+      &::after {
+        left: 0% !important;
+        width: 150% !important; /* Stretches the image across the whole word */
+        /* ADJUST THIS HEIGHT to match your image's thickness */
+        height: 100px !important;
+        /* ADJUST THIS BOTTOM value to move the image up/down */
+        bottom: -20px !important;
+      }
     }
 
     /* Typography & Buttons */
@@ -664,6 +701,31 @@ body {
           font-size: 72px;
           font-weight: 700;
           color: #ffffff;
+
+          .highlight-design {
+            position: relative; /* Anchors the image to this word */
+            display: inline-block; /* Ensures the width matches the word */
+            z-index: 1; /* Ensures text sits ON TOP of the image */
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: -30%;
+              width: 250%; /* Stretches the image across the whole word */
+
+              /* ADJUST THIS HEIGHT to match your image's thickness */
+              height: 40px;
+
+              /* ADJUST THIS BOTTOM value to move the image up/down */
+              bottom: -30px;
+
+              /* Replace with your specific file path */
+              background-image: url("./images/header-design.svg");
+              background-repeat: no-repeat;
+              background-size: 100% 100%; /* or 'contain' depending on image shape */
+              z-index: -1; /* Puts the image BEHIND the text */
+            }
+          }
         }
 
         p {
@@ -711,6 +773,26 @@ body {
     }
   }
 
+  @media screen and (min-width: 590px) and (max-width: 789px) {
+    .highlight-design {
+      position: relative; /* Anchors the image to this word */
+      display: inline-block; /* Ensures the width matches the word */
+      z-index: 1; /* Ensures text sits ON TOP of the image */
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 170% !important;
+        width: 150% !important; /* Stretches the image across the whole word */
+
+        /* ADJUST THIS HEIGHT to match your image's thickness */
+        height: 40px !important;
+
+        /* ADJUST THIS BOTTOM value to move the image up/down */
+        bottom: 5px !important;
+      }
+    }
+  }
   /* =========================================
      RESPONSIVE: Tablet & Mobile (Max 1152px)
      ========================================= */
@@ -744,6 +826,28 @@ body {
     }
   }
 
+  @media screen and (max-width: 580px) and (min-width: 390px) {
+    .highlight-design {
+      position: relative; /* Anchors the image to this word */
+      display: inline-block; /* Ensures the width matches the word */
+      z-index: 1; /* Ensures text sits ON TOP of the image */
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: -10% !important;
+        width: 150% !important; /* Stretches the image across the whole word */
+
+        /* ADJUST THIS HEIGHT to match your image's thickness */
+        height: 40px !important;
+        background-image: url("./images/Extension-design.svg") !important;
+        /* ADJUST THIS BOTTOM value to move the image up/down */
+        bottom: -80px !important;
+        background-size: 150% 100% !important;
+        z-index: -1 !important; /* Puts the image BEHIND the text */
+      }
+    }
+  }
   /* =========================================
      RESPONSIVE: Mobile (Max 425px)
      ========================================= */
@@ -781,10 +885,28 @@ body {
     .container3-mainBox {
       gap: 70px;
     }
+    .highlight-design {
+      position: relative; /* Anchors the image to this word */
+      display: inline-block; /* Ensures the width matches the word */
+      z-index: 1; /* Ensures text sits ON TOP of the image */
 
+      &::after {
+        content: "";
+        position: absolute;
+        left: 30% !important;
+        width: 150% !important; /* Stretches the image across the whole word */
+
+        /* ADJUST THIS HEIGHT to match your image's thickness */
+        height: 40px !important;
+        background-image: url("./images/Extension-design.svg") !important;
+        /* ADJUST THIS BOTTOM value to move the image up/down */
+        bottom: -50px !important;
+        /* background-size: 100% 100% !important; or 'contain' depending on image shape */
+      }
+    }
     .container3-mainBox-Box1 .innerBox h1 {
       /* 2. Force font smaller so "Extension" fits */
-      font-size: 28px !important;
+      font-size: 36px !important;
 
       /* 3. Safety Net: Break word if it's still too long */
       word-wrap: break-word;
@@ -805,9 +927,9 @@ body {
   padding: 0;
 }
 
-body {
+* body {
   font-family: "Inter", sans-serif;
-  overflow-x: hidden; /* Prevents white bar on small screens */
+  overflow-x: hidden; 
 }
 
 .container4 {
@@ -815,7 +937,6 @@ body {
   justify-content: center;
   width: 100%;
   background-color: #ffffff;
-  /* Replaced fixed padding/height with fluid padding */
   padding: 140px 20px;
 
   .mainBox {
@@ -832,7 +953,6 @@ body {
       flex: 1; /* Takes available space */
       width: 100%;
       background-color: #c4defd;
-      /* Aspect Ratio maintains the shape (714 / 532) */
       aspect-ratio: 714 / 532;
       max-width: 714px;
       border-radius: 4px;
@@ -840,7 +960,7 @@ body {
 
     /* --- RIGHT SIDE: TEXT --- */
     .Box1 {
-      flex: 1; /* Takes available space */
+      flex: 1; 
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -850,7 +970,6 @@ body {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        /* Removed fixed height/width to allow content to flow */
         width: 100%;
 
         h1 {
@@ -859,6 +978,27 @@ body {
           font-size: 72px;
           font-weight: 700;
           color: #212529;
+          .highlight-design {
+            position: relative; /* Anchors the image to this word */
+            display: inline-block; /* Ensures the width matches the word */
+            z-index: 1; /* Ensures text sits ON TOP of the image */
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: -5%;
+              width: 170%; /* Stretches the image across the whole word */
+
+              height: 70px;
+
+              bottom: -13px;
+
+              background-image: url("./images/header-design.svg");
+              background-repeat: no-repeat;
+              background-size: 100% 100%; /* or 'contain' depending on image shape */
+              z-index: -1; /* Puts the image BEHIND the text */
+            }
+          }
         }
 
         p {
@@ -893,10 +1033,30 @@ body {
       }
     }
   }
+  @media screen and (min-width: 390px) and (max-width: 769px) {
+    .highlight-design {
+      position: relative; /* Anchors the image to this word */
+      display: inline-block; /* Ensures the width matches the word */
+      z-index: 1; /* Ensures text sits ON TOP of the image */
 
-  /* =========================================
+      &::after {
+        content: "";
+        position: absolute;
+        left: 25% !important;
+        width: 110% !important; /* Stretches the image across the whole word */
+
+        height: 50px !important;
+
+        bottom: -13px;
+
+        background-image: url("./images/Customise-design.svg") !important;
+      }
+    }
+  }
+
+  /* 
      RESPONSIVE: Tablet & Small Laptop (Max 1152px)
-     ========================================= */
+      */
   @media screen and (max-width: 1152px) {
     padding: 140px 20px;
     .container4 {
@@ -910,7 +1070,6 @@ body {
       align-items: center !important;
     }
     .mainBox {
-      /* Stack Items Vertically */
       flex-direction: column;
       text-align: center;
       gap: 60px;
@@ -937,9 +1096,9 @@ body {
     }
   }
 
-  /* =========================================
+  /* 
      RESPONSIVE: Mobile (Max 425px)
-     ========================================= */
+      */
   @media screen and (max-width: 426px) {
     padding: 100px 20px;
     max-height: 860px;
@@ -972,13 +1131,30 @@ body {
     }
   }
 
-  /* =========================================
+  /* 
      RESPONSIVE: Small Mobile (Max 375px)
-     Fixes the "White Bar" issue
-     ========================================= */
+      */
   @media screen and (max-width: 376px) {
-    padding: 60px 15px; /* Tighter padding */
+    padding: 60px 15px; 
 
+    .highlight-design {
+      position: relative; 
+      display: inline-block;
+      z-index: 1; /* Ensures text sits ON TOP of the image */
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 40% !important;
+        width: 80% !important; /* Stretches the image across the whole word */
+
+        height: 50px !important;
+
+        bottom: -13px;
+
+        background-image: url("./images/Customise-design.svg") !important;
+      }
+    }
     .innerBox h1 {
       font-size: 40px !important; /* Fits "Customise" on one line */
       word-wrap: break-word;
@@ -1020,6 +1196,30 @@ body {
       font-size: 72px;
       font-weight: 700;
       line-height: 1.1;
+      .highlight-design {
+        position: relative; /* Anchors the image to this word */
+        display: inline-block; /* Ensures the width matches the word */
+        z-index: 1; /* Ensures text sits ON TOP of the image */
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 5%;
+          width: 120%; /* Stretches the image across the whole word */
+
+          /* ADJUST THIS HEIGHT to match your image's thickness */
+          height: 90px;
+
+          /* ADJUST THIS BOTTOM value to move the image up/down */
+          bottom: -20px;
+
+          /* Replace with your specific file path */
+          background-image: url("./images/header-design.svg");
+          background-repeat: no-repeat;
+          background-size: 120% 100%; /* or 'contain' depending on image shape */
+          z-index: -1; /* Puts the image BEHIND the text */
+        }
+      }
     }
     p {
       margin: 0;
@@ -1305,9 +1505,6 @@ body {
     }
   }
   @media screen and (max-width: 390px) {
-    .card-item1 h1 {
-      font-size: 24px !important;
-    }
     .card {
       padding: 20px 10px !important;
     }
@@ -1318,6 +1515,33 @@ body {
 
   /*RESPONSIVE: MOBILE (Max 480px - Covers 390, 425)*/
   @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 36px !important;
+      .highlight-design {
+        position: relative; /* Anchors the image to this word */
+        display: inline-block; /* Ensures the width matches the word */
+        z-index: 1; /* Ensures text sits ON TOP of the image */
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 50% !important;
+          width: 100% !important; /* Stretches the image across the whole word */
+
+          /* ADJUST THIS HEIGHT to match your image's thickness */
+          height: 90px;
+
+          /* ADJUST THIS BOTTOM value to move the image up/down */
+          bottom: -40px !important;
+
+          /* Replace with your specific file path */
+          background-image: url("./images/plan-design.svg") !important;
+          background-repeat: no-repeat;
+          background-size: 100% 100%; /* or 'contain' depending on image shape */
+          z-index: -1; /* Puts the image BEHIND the text */
+        }
+      }
+    }
     .container5 {
       gap: 40px;
     }
@@ -1425,6 +1649,30 @@ body {
           color: #ffffff;
           letter-spacing: -2%;
           line-height: 1.1;
+          .highlight-design {
+            position: relative; /* Anchors the image to this word */
+            display: inline-block; /* Ensures the width matches the word */
+            z-index: 1; /* Ensures text sits ON TOP of the image */
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: -13%;
+              width: 118%; /* Stretches the image across the whole word */
+
+              /* ADJUST THIS HEIGHT to match your image's thickness */
+              height: 50px;
+
+              /* ADJUST THIS BOTTOM value to move the image up/down */
+              bottom: -12px;
+
+              /* Replace with your specific file path */
+              background-image: url("./images/your-work.svg");
+              background-repeat: no-repeat;
+              background-size: 110% 100%; /* or 'contain' depending on image shape */
+              z-index: -1; /* Puts the image BEHIND the text */
+            }
+          }
         }
       }
 
@@ -1478,6 +1726,13 @@ body {
   }
 
   @media screen and (max-width: 768px) {
+    h1 {
+      .highlight-design {
+        &::after {
+          left: 10% !important;
+        }
+      }
+    }
     .mainbox1 .mainBox1-box1 h1 {
       font-size: 54px !important;
     }
@@ -1541,10 +1796,25 @@ body {
   /* =========================================
    FIX FOR 375px & 320px (Small/Medium Mobile)
    ========================================= */
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 370px) {
     .container6 {
       /* 1. Reduce padding to give text 10px more room */
       padding: 60px 15px;
+    }
+
+    h1 {
+      .highlight-design {
+        &::after {
+          left: -13% !important;
+          width: 230% !important; /* Stretches the image across the whole word */
+
+          /* ADJUST THIS HEIGHT to match your image's thickness */
+          height: 70px !important;
+
+          /* ADJUST THIS BOTTOM value to move the image up/down */
+          bottom: -25px !important;
+        }
+      }
     }
 
     .mainbox1 .mainBox1-box1 h1 {
@@ -1602,6 +1872,30 @@ body {
           color: #212529;
           letter-spacing: -2%;
           line-height: 1.1;
+          .highlight-design {
+            position: relative; /* Anchors the image to this word */
+            display: inline-block; /* Ensures the width matches the word */
+            z-index: 1; /* Ensures text sits ON TOP of the image */
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: -10%;
+              width: 130%; /* Stretches the image across the whole word */
+
+              /* ADJUST THIS HEIGHT to match your image's thickness */
+              height: 38px;
+
+              /* ADJUST THIS BOTTOM value to move the image up/down */
+              bottom: -12px;
+
+              /* Replace with your specific file path */
+              background-image: url("./images/your-data.svg");
+              background-repeat: no-repeat;
+              background-size: 100% 100%; /* or 'contain' depending on image shape */
+              z-index: -1; /* Puts the image BEHIND the text */
+            }
+          }
         }
 
         .container7-le-innerBox2 p {
@@ -1650,10 +1944,15 @@ body {
     }
   }
 
+  @media screen and (min-width: 800px) and (max-width: 1200px) {
+    .container7-leftBox-innerBox1 .container7-le-innerBox1 h1 {
+      font-size: 64px !important;
+    }
+  }
   /* =========================================
      RESPONSIVE: Tablet & Small Laptop (Max 1152px)
      ========================================= */
-  @media screen and (max-width: 1152px) {
+  @media screen and (max-width: 1150px) {
     padding: 100px 20px;
 
     .container7-mainBox {
@@ -1764,6 +2063,30 @@ body {
         color: #212529;
         letter-spacing: -2%;
         line-height: 1.1;
+        .highlight-design {
+          position: relative; /* Anchors the image to this word */
+          display: inline-block; /* Ensures the width matches the word */
+          z-index: 1; /* Ensures text sits ON TOP of the image */
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: -10%;
+            width: 130%; /* Stretches the image across the whole word */
+
+            /* ADJUST THIS HEIGHT to match your image's thickness */
+            height: 38px;
+
+            /* ADJUST THIS BOTTOM value to move the image up/down */
+            bottom: -12px;
+
+            /* Replace with your specific file path */
+            background-image: url("./images/sponsors-design.svg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%; /* or 'contain' depending on image shape */
+            z-index: -1; /* Puts the image BEHIND the text */
+          }
+        }
       }
     }
 
@@ -2033,6 +2356,30 @@ body {
       font-weight: 700;
       letter-spacing: -2%;
       line-height: 1.1;
+      .highlight-design {
+        position: relative; /* Anchors the image to this word */
+        display: inline-block; /* Ensures the width matches the word */
+        z-index: 1; /* Ensures text sits ON TOP of the image */
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: -15%;
+          width: 150%; /* Stretches the image across the whole word */
+
+          /* ADJUST THIS HEIGHT to match your image's thickness */
+          height: 50px;
+
+          /* ADJUST THIS BOTTOM value to move the image up/down */
+          bottom: 5px;
+
+          /* Replace with your specific file path */
+          background-image: url("./images/clients-design.svg");
+          background-repeat: no-repeat;
+          background-size: 100% 100%; /* or 'contain' depending on image shape */
+          z-index: -1; /* Puts the image BEHIND the text */
+        }
+      }
     }
   }
 
@@ -2257,7 +2604,27 @@ body {
       padding: 20px 20px;
       gap: 20px;
     }
+    .highlight-design {
+          position: relative; /* Anchors the image to this word */
+          display: inline-block; /* Ensures the width matches the word */
+          z-index: 1; /* Ensures text sits ON TOP of the image */
 
+          &::after {
+            content: "";
+            position: absolute;
+            left: 5% !important;
+            width: 80% !important; /* Stretches the image across the whole word */
+
+            /* ADJUST THIS HEIGHT to match your image's thickness */
+            height: 25px !important;
+
+            /* ADJUST THIS BOTTOM value to move the image up/down */
+            bottom: -12px;
+
+            /* Replace with your specific file path */
+            background-image: url("./images/sponsors-design.svg");  
+          }
+        }
     .cards {
       min-width: 100%;
       max-width: 100%;
