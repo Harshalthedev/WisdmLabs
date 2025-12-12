@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./style1.css" />
+    <link rel="stylesheet" href="./style.css" />
   </head>
-
   <body>
     <div class="header">
       <div class="innerHeader">
@@ -42,10 +41,21 @@
           </div>
         </div>
 
-        <div class="hamburger-menu">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+        <label for="nav-toggle" class="hamburger-menu">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
+        </label>
+
+        <div class="mobile-menu">
+          <a href="#">Products</a>
+          <a href="#">Solutions</a>
+          <a href="#">Resources</a>
+          <a href="#">Pricing</a>
+          <button class="login-btn-mobile">Login</button>
+          <button class="try-btn-mobile">Try Whitepace Free</button>
         </div>
       </div>
     </div>
@@ -77,7 +87,7 @@
       <div class="container2-mainBox">
         <div class="container2-box">
           <div class="container2-box-innerBox">
-            <h1>Project Management</h1>
+            <h1>Project <span class="highlight-design">Management</span></h1>
             <p>
               Images, videos, PDFs and audio files are supported. Create math
               expressions and diagrams directly from the app. Take photos with
@@ -95,7 +105,7 @@
         </div>
         <div class="container2-mainBox2-box">
           <div class="container2-mainBox2-box-inner">
-            <h1>Work together</h1>
+            <h1>Work <span class="highlight-designs">together</span></h1>
             <p>
               With whitepace, share your notes with your colleagues and
               collaborate on them. You can also publish a note to the internet
@@ -112,7 +122,7 @@
       <div class="container3-mainBox">
         <div class="container3-mainBox-Box1">
           <div class="Box1 innerBox">
-            <h1>Use as Extension</h1>
+            <h1><span class="highlight-design">Use as</span> Extension</h1>
             <p>
               Use the web clipper extension, available on Chrome and Firefox, to
               save web pages or take screenshots as notes.
@@ -131,7 +141,9 @@
 
         <div class="Box1">
           <div class="innerBox">
-            <h1>Customise it to your needs</h1>
+            <h1>
+              Customise it to <span class="highlight-design">your needs</span>
+            </h1>
             <p>
               Customise the app with plugins, custom themes and multiple text
               editors (Rich Text or Markdown). Or create your own scripts and
@@ -144,12 +156,210 @@
     </div>
 
     <!-- container 5 -->
+    <div class="container5">
+      <div class="mainBox1">
+        <h1>Choose <span class="highlight-design">Your Plan</span></h1>
+        <p>
+          Whether you want to get organized, keep your personal life on track,
+          or boost workplace productivity, Evernote has the right plan for you.
+        </p>
+      </div>
+
+      <div class="mainBox2">
+        <input type="radio" name="pricing" id="plan1" />
+        <input type="radio" name="pricing" id="plan2" checked />
+        <input type="radio" name="pricing" id="plan3" />
+
+        <div class="cards">
+          <label for="plan1" class="card">
+            <div class="card-item1">
+              <h1>Free</h1>
+              <p class="money">$0</p>
+              <p class="text">Capture ideas and find them quickly</p>
+            </div>
+            <div class="card-item2">
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Sync unlimited devices
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />10 GB monthly uploads
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />200 MB max. note size
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Customize Home dashboard and access extra widgets
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Connect primary Google Calendar account
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Add due dates, reminders, and notifications to your tasks
+              </div>
+            </div>
+            <button>
+              Get Started<img
+                class="btn-icon"
+                src="./images/right-arrow.svg"
+                alt=""
+              />
+            </button>
+          </label>
+
+          <label for="plan2" class="card">
+            <div class="card-item1">
+              <h1>Personal</h1>
+              <p class="money">$11.99</p>
+              <p class="text">Keep home and family on track</p>
+            </div>
+            <div class="card-item2">
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Sync unlimited devices
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />10 GB monthly uploads
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />200 MB max. note size
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Customize Home dashboard and access extra widgets
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Connect primary Google Calendar account
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Add due dates, reminders, and notifications to your tasks
+              </div>
+            </div>
+            <button>
+              Get Started<img
+                class="btn-icon"
+                src="./images/right-arrow.svg"
+                alt=""
+              />
+            </button>
+          </label>
+
+          <label for="plan3" class="card">
+            <div class="card-item1">
+              <h1>Organization</h1>
+              <p class="money">$49.99</p>
+              <p class="text">Capture ideas and find them quickly</p>
+            </div>
+            <div class="card-item2">
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Sync unlimited devices
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />10 GB monthly uploads
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />200 MB max. note size
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Customize Home dashboard and access extra widgets
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Connect primary Google Calendar account
+              </div>
+              <div class="list-item">
+                <img
+                  class="check-icon"
+                  src="./images/right-tick.svg"
+                  alt=""
+                />Add due dates, reminders, and notifications to your tasks
+              </div>
+            </div>
+            <button>
+              Get Started<img
+                class="btn-icon"
+                src="./images/right-arrow.svg"
+                alt=""
+              />
+            </button>
+          </label>
+        </div>
+      </div>
+    </div>
+
     <!-- container 6 -->
     <div class="container6">
       <div class="mainBox">
         <div class="mainbox1">
           <div class="mainBox1-box1">
-            <h1>Your work, everywhere you are</h1>
+            <h1>
+              Your work, everywhere
+              <span class="highlight-design">you are</span>
+            </h1>
           </div>
           <div class="mainBox1-box2">
             <p>
@@ -173,7 +383,7 @@
         <div class="container7-leftBox">
           <div class="container7-leftBox-innerBox1">
             <div class="container7-le-innerBox1">
-              <h1>100% your data</h1>
+              <h1>100% <span class="highlight-design">your data</span></h1>
             </div>
             <div class="container7-le-innerBox2">
               <p>
@@ -197,7 +407,7 @@
     <div class="container8">
       <div class="container8-mainBox">
         <div class="container8-mainBox-box1">
-          <h1>Our sponsors</h1>
+          <h1>Our <span class="highlight-design">sponsors</span></h1>
         </div>
 
         <div class="container8-mainBox-box2">
@@ -239,11 +449,12 @@
     <!-- container 10 -->
     <div class="container10">
       <div class="container10-item1">
-        <h1>What Our Clients Says</h1>
+        <h1>What Our <span class="highlight-design">Clients Says</span></h1>
       </div>
+
       <div class="container10-item2">
         <div class="mainBox2-box">
-          <div class="cards" onclick="toggleCard(this)">
+          <div class="cards" onclick="toggleCard(this, event)">
             <div class="box-item1">
               <img
                 class="quote-icon"
@@ -267,7 +478,7 @@
             </div>
           </div>
 
-          <div class="cards blue" onclick="toggleCard(this)">
+          <div class="cards" onclick="toggleCard(this, event)">
             <div class="box-item1">
               <img
                 class="quote-icon"
@@ -291,7 +502,7 @@
             </div>
           </div>
 
-          <div class="cards blue" onclick="toggleCard(this)">
+          <div class="cards" onclick="toggleCard(this, event)">
             <div class="box-item1">
               <img
                 class="quote-icon"
@@ -324,24 +535,6 @@
       </div>
     </div>
 
-    <script>
-      function toggleCard(cardElement) {
-        // 1. Toggle the 'blue' class
-        cardElement.classList.toggle("blue");
-
-        // 2. Handle Image Swap (Blue Quote <-> White Quote)
-        const img = cardElement.querySelector(".quote-icon");
-
-        if (cardElement.classList.contains("blue")) {
-          // If it became Blue, use White Quote
-          img.src = "./images/White-Quote.svg";
-        } else {
-          // If it became White, use Blue Quote
-          img.src = "./images/Blue-Quote.svg";
-        }
-      }
-    </script>
-
     <!-- container 11 -->
     <div class="container11">
       <div class="container11-item">
@@ -363,6 +556,7 @@
       </div>
     </div>
 
+    <!-- container 12 footer -->
     <footer class="container12">
       <div class="container12-mainBox">
         <div class="container12-mainBox1">
@@ -406,8 +600,7 @@
           </div>
         </div>
 
-        <div class="line"></div>
-
+        <!-- line -->
         <div class="container12-mainBox2">
           <div class="mainBox2-left">
             <div class="lang-dropdown">
@@ -425,6 +618,7 @@
             </div>
           </div>
 
+          <div class="line"></div>
           <div class="mainBox2-right">
             <a class="item1" href="#"
               ><img src="./images/Facebook.svg" alt="Facebook"
