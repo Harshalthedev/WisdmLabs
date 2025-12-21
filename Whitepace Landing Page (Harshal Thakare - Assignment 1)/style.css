@@ -316,7 +316,7 @@ body {
   align-items: flex-start;
   gap: 60px;
   max-width: 656px; /* It won't get wider than this */
-  min-width: 0; 
+  min-width: 0;
 }
 
 .hero-text-body h2 {
@@ -452,7 +452,7 @@ body {
 
               background-image: url("./images/header-design.svg");
               background-repeat: no-repeat;
-              background-size: 100% 100%; 
+              background-size: 100% 100%;
               z-index: -1; /* Puts the image BEHIND the text */
             }
           }
@@ -929,7 +929,7 @@ body {
 
 * body {
   font-family: "Inter", sans-serif;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 .container4 {
@@ -960,7 +960,7 @@ body {
 
     /* --- RIGHT SIDE: TEXT --- */
     .Box1 {
-      flex: 1; 
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -1135,10 +1135,10 @@ body {
      RESPONSIVE: Small Mobile (Max 375px)
       */
   @media screen and (max-width: 376px) {
-    padding: 60px 15px; 
+    padding: 60px 15px;
 
     .highlight-design {
-      position: relative; 
+      position: relative;
       display: inline-block;
       z-index: 1; /* Ensures text sits ON TOP of the image */
 
@@ -1178,9 +1178,9 @@ body {
   width: 100%;
   background-color: #ffffff;
   padding: 140px 20px;
-  gap: 80px !important;
+  gap: 80px;
 
-  /* --- Header Section --- */
+  /* --- Header Section (MainBox1) --- */
   .mainBox1 {
     display: flex;
     flex-direction: column;
@@ -1189,74 +1189,70 @@ body {
     gap: 24px;
     width: 100%;
     max-width: 900px;
-
-    h1 {
-      margin: 0;
-      color: #212529;
-      font-size: 72px;
-      font-weight: 700;
-      line-height: 1.1;
-      .highlight-design {
-        position: relative; /* Anchors the image to this word */
-        display: inline-block; /* Ensures the width matches the word */
-        z-index: 1; /* Ensures text sits ON TOP of the image */
-
-        &::after {
-          content: "";
-          position: absolute;
-          left: 5%;
-          width: 120%; /* Stretches the image across the whole word */
-
-          /* ADJUST THIS HEIGHT to match your image's thickness */
-          height: 90px;
-
-          /* ADJUST THIS BOTTOM value to move the image up/down */
-          bottom: -20px;
-
-          /* Replace with your specific file path */
-          background-image: url("./images/header-design.svg");
-          background-repeat: no-repeat;
-          background-size: 120% 100%; /* or 'contain' depending on image shape */
-          z-index: -1; /* Puts the image BEHIND the text */
-        }
-      }
-    }
-    p {
-      margin: 0;
-      color: #212529;
-      font-size: 18px;
-      line-height: 30px;
-      font-weight: 400;
-      max-width: 800px;
-    }
   }
 
-  /* --- Cards Wrapper --- */
+  .mainBox1 h1 {
+    margin: 0;
+    color: #212529;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  /* Highlight Design Underline */
+  .mainBox1 h1 .highlight-design {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+  }
+
+  .mainBox1 h1 .highlight-design::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    width: 120%;
+    height: 90px;
+    bottom: -20px;
+    background-image: url("./images/header-design.svg");
+    background-repeat: no-repeat;
+    background-size: 120% 100%;
+    z-index: -1;
+  }
+
+  .mainBox1 p {
+    margin: 0;
+    color: #212529;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    max-width: 800px;
+  }
+
+  /* --- Cards Wrapper (MainBox2) --- */
   .mainBox2 {
     width: 100%;
     max-width: 1440px;
     display: flex;
     justify-content: center;
-
-    /* Hide Radio Inputs */
-    input[type="radio"] {
-      display: none;
-    }
-
-    .cards {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 32px;
-      width: 100%;
-      align-items: stretch;
-    }
   }
 
-  /*INDIVIDUAL CARD STYLING (Default White)
-       */
+  /* Hide Radio Inputs */
+  .mainBox2 input[type="radio"] {
+    display: none;
+  }
+
+  .mainBox2 .cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  /* --- INDIVIDUAL CARD STYLING (Default White) --- */
   .card {
-    flex: 1; /* Desktop: Share space */
+    flex: 1;
     max-width: 390px;
     border-radius: 10px;
     border: 1px solid #ffe492;
@@ -1269,200 +1265,140 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-
-    /* Default Text Colors (Black) */
-    .card-item1 h1,
-    .card-item1 .text,
-    .card-item2 .list-item {
-      color: #212529;
-      transition: color 0.3s;
-    }
-    .card-item1 .money {
-      color: #212529;
-      transition: color 0.3s;
-      font-size: 36px;
-      font-weight: 700;
-      font-family: "Inter", sans-serif;
-    }
-
-    .card-item1 {
-      padding-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .card-item2 {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .list-item {
-      display: flex;
-      gap: 15px;
-      align-items: flex-start;
-      font-size: 16px;
-      line-height: 24px;
-    }
-
-    /* Default Icon (Black) */
-    .check-icon,
-    .btn-icon {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      filter: invert(13%) sepia(10%) saturate(692%) hue-rotate(169deg)
-        brightness(93%) contrast(88%);
-      transition: filter 0.3s;
-    }
-
-    /* Default Button (White) */
-    button {
-      margin-bottom: 20px;
-      margin-top: 15px;
-      width: 170px;
-      height: 55px;
-      border-radius: 8px;
-      border: 1px solid #ffe492;
-      background-color: #ffffff;
-      color: #212529;
-      font-size: 16px;
-      font-weight: 500;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
   }
 
-  /* (Hover OR Click)
-  
-*/
+  /* Default Text Colors (Black) */
+  .card .card-item1 h1,
+  .card .card-item1 .text,
+  .card .card-item2 .list-item {
+    color: #212529;
+    transition: color 0.3s;
+  }
+
+  .card .card-item1 .money {
+    color: #212529;
+    transition: color 0.3s;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+  }
+
+  .card-item1 {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card-item2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .list-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  /* Default Icon (Black) */
+  .check-icon,
+  .btn-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    /* Converts black SVG to dark gray/black */
+    filter: invert(13%) sepia(10%) saturate(692%) hue-rotate(169deg)
+      brightness(93%) contrast(88%);
+    transition: filter 0.3s;
+  }
+
+  /* Default Button (White) */
+  button {
+    margin-bottom: 20px;
+    margin-top: 15px;
+    width: 170px;
+    height: 55px;
+    border-radius: 8px;
+    border: 1px solid #ffe492;
+    background-color: #ffffff;
+    color: #212529;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  /* --- ACTIVE / HOVER STATE --- */
+  .card.active-plan,
   .card:hover {
-    background-color: #043873;
+    background-color: #043873; /* Dark Blue */
     transform: scale(1.07);
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
     border: none;
     z-index: 20;
-
-    .card-item1 h1,
-    .card-item1 .text,
-    .card-item2 .list-item {
-      color: #ffffff;
-    }
-
-    .card-item1 .money {
-      color: #ffe492;
-    }
-
-    /* Golden Check Icon */
-    .check-icon {
-      filter: invert(87%) sepia(26%) saturate(838%) hue-rotate(321deg)
-        brightness(103%) contrast(101%);
-    }
-
-    /* White Arrow */
-    .btn-icon {
-      filter: brightness(0) invert(1);
-    }
-
-    button {
-      background-color: #4f9cf9;
-      color: #ffffff;
-      border: none;
-      width: 60%;
-    }
   }
 
-  /* 2. DEFAULT MIDDLE CARD STATE (Desktop Only Logic):
-   If the user is NOT hovering over the container (.mainBox2),
-   AND Radio #2 is checked, apply styles to Card #2.
-*/
-  .mainBox2:not(:hover) input#plan2:checked ~ .cards label[for="plan2"] {
-    background-color: #043873;
-    transform: scale(1.07);
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+  /* Turn Text White on Active */
+  .card.active-plan .card-item1 h1,
+  .card.active-plan .card-item1 .text,
+  .card.active-plan .card-item2 .list-item,
+  .card:hover .card-item1 h1,
+  .card:hover .card-item1 .text,
+  .card:hover .card-item2 .list-item {
+    color: #ffffff;
+  }
+
+  /* Turn Money Gold on Active */
+  .card.active-plan .card-item1 .money,
+  .card:hover .card-item1 .money {
+    color: #ffe492;
+  }
+
+  /* Golden Check Icon on Active */
+  .card.active-plan .check-icon,
+  .card:hover .check-icon {
+    filter: invert(87%) sepia(26%) saturate(838%) hue-rotate(321deg)
+      brightness(103%) contrast(101%);
+  }
+
+  /* White Arrow Icon on Active */
+  .card.active-plan .btn-icon,
+  .card:hover .btn-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Blue Button on Active */
+  .card.active-plan button,
+  .card:hover button {
+    background-color: #4f9cf9;
+    color: #ffffff;
     border: none;
-    z-index: 10;
+    width: 50%;
+  }
 
-    .card-item1 h1,
-    .card-item1 .text,
-    .card-item2 .list-item {
-      color: #ffffff;
-    }
-    .card-item1 .money {
-      color: #ffe492;
-    }
-    .check-icon {
-      filter: invert(87%) sepia(26%) saturate(838%) hue-rotate(321deg)
-        brightness(103%) contrast(101%);
-    }
-    .btn-icon {
-      filter: brightness(0) invert(1);
-    }
-    button {
-      background-color: #4f9cf9;
-      color: #ffffff;
-      border: none;
-      width: 60%;
+  /* --- RESPONSIVE CSS --- */
+  @media screen and (min-width: 430px) and (max-width: 769px) {
+    .card {
+      min-width: 80% !important;
+      max-width: 80% !important;
     }
   }
 
-  /* 3. MOBILE/TOUCH STATE (Alternative to @media hover:none):
-   This simply applies the active style to ANY checked radio button.
-   This runs alongside the hover logic but is essential for mobile taps.
-*/
-  input#plan1:checked ~ .cards label[for="plan1"],
-  input#plan2:checked ~ .cards label[for="plan2"],
-  input#plan3:checked ~ .cards label[for="plan3"] {
-    /* We use a media query here to ensure this only dominates on touch screens 
-     or when not conflicting with the hover logic above */
-  }
-
-  @media (hover: none) {
-    input#plan1:checked ~ .cards label[for="plan1"],
-    input#plan2:checked ~ .cards label[for="plan2"],
-    input#plan3:checked ~ .cards label[for="plan3"] {
-      background-color: #043873;
-      transform: scale(1.07);
-      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
-      border: none;
-      z-index: 10;
-
-      .card-item1 h1,
-      .card-item1 .text,
-      .card-item2 .list-item {
-        color: #ffffff;
-      }
-      .card-item1 .money {
-        color: #ffe492;
-      }
-      .check-icon {
-        filter: invert(87%) sepia(26%) saturate(838%) hue-rotate(321deg)
-          brightness(103%) contrast(101%);
-      }
-      .btn-icon {
-        filter: brightness(0) invert(1);
-      }
-      button {
-        background-color: #4f9cf9;
-        color: #ffffff;
-        border: none;
-        width: 60%;
-      }
-    }
-  }
-
-  /* 
-         RESPONSIVE: TABLET (Max 1152px)*/
+  /* TABLET (Max 1152px) */
   @media screen and (max-width: 1152px) {
-    /* .container5 { */
-    padding: 100px 0; /* Full width for scroll */
-    gap: 60px;
-    /* } */
+    .container5 {
+      overflow-x: hidden !important;
+      padding: 100px 0;
+      gap: 60px;
+    }
 
     .mainBox1 {
       padding: 0 20px;
@@ -1474,140 +1410,72 @@ body {
     /* Scroll Container */
     .mainBox2 .cards {
       display: flex;
-      flex-wrap: nowrap; /* Force single line */
-      overflow-x: auto; /* Enable scroll */
-      scroll-snap-type: x mandatory; /* Snap logic */
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
       gap: 20px;
       justify-content: flex-start;
-
-      /* PADDING: 15% Left/Right + 70% Card = 100% 
-             This centers the active card */
-      padding: 40px 15%;
-
-      -ms-overflow-style: none; /* Hide Scrollbar IE */
-      scrollbar-width: none; /* Hide Scrollbar Firefox */
+      padding: 40px 15%; /* Padding to center active card */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
+
     .mainBox2 .cards::-webkit-scrollbar {
-      display: none; /* Hide Scrollbar Chrome */
+      display: none;
     }
 
-    /* Card Sizing */
     .card {
-      min-width: 99%;
-      max-width: 100%;
+      min-width: 55%;
+      max-width: 55%;
       scroll-snap-align: center;
-      /* Disable hover transform on touch to prevent glitching */
-      transform: none !important;
+      transform: none !important; /* Disable hover scale on touch */
     }
 
     .card button {
       width: 60%;
     }
   }
+
+  /* SMALL MOBILE (Max 390px) */
   @media screen and (max-width: 390px) {
-    .card {
+    .container5 .card {
       padding: 20px 10px !important;
     }
-    .mainBox2 .cards {
+    .container5 .mainBox2 .cards {
       padding: 20px 15px !important;
     }
   }
 
-  /*RESPONSIVE: MOBILE (Max 480px - Covers 390, 425)*/
+  /* MOBILE (Max 480px) */
   @media screen and (max-width: 480px) {
-    h1 {
-      font-size: 36px !important;
-      .highlight-design {
-        position: relative; /* Anchors the image to this word */
-        display: inline-block; /* Ensures the width matches the word */
-        z-index: 1; /* Ensures text sits ON TOP of the image */
-
-        &::after {
-          content: "";
-          position: absolute;
-          left: 50% !important;
-          width: 100% !important; /* Stretches the image across the whole word */
-
-          /* ADJUST THIS HEIGHT to match your image's thickness */
-          height: 90px;
-
-          /* ADJUST THIS BOTTOM value to move the image up/down */
-          bottom: -40px !important;
-
-          /* Replace with your specific file path */
-          background-image: url("./images/plan-design.svg") !important;
-          background-repeat: no-repeat;
-          background-size: 100% 100%; /* or 'contain' depending on image shape */
-          z-index: -1; /* Puts the image BEHIND the text */
-        }
-      }
+    .container5 {
+      overflow-x: hidden !important;
     }
+    .container5 h1 {
+      font-size: 36px !important;
+    }
+
+    .container5 .highlight-design::after {
+      left: 50% !important;
+      width: 100% !important;
+      bottom: -40px !important;
+      background-image: url("./images/plan-design.svg") !important;
+    }
+
     .container5 {
       gap: 40px;
     }
-    .mainBox1 h1 {
-      font-size: 36px;
-    }
 
     .mainBox2 .cards {
-      /* Smaller gap for mobile */
       gap: 20px;
-      /* Adjust padding so card takes up most of screen */
       padding: 20px 7.5%;
     }
 
     .card {
-      /* 85vw lets the user see a 'peek' of the next card, 
-             indicating it is scrollable. Much better UX than 100%. */
       min-width: 85vw;
       max-width: 85vw;
       scroll-snap-align: center;
-      padding: 30px 24px; /* Reduce internal padding */
-    }
-  }
-  @media screen and (min-width: 767px) and (max-width: 1154px) {
-    /* .container5 { */
-    padding: 100px 0; /* Full width for scroll */
-    gap: 60px;
-    /* } */
-
-    .mainBox1 {
-      padding: 0 20px;
-    }
-    .mainBox1 h1 {
-      font-size: 54px;
-    }
-
-    /* Scroll Container */
-    .mainBox2 .cards {
-      display: flex;
-      flex-wrap: nowrap; /* Force single line */
-      overflow-x: auto; /* Enable scroll */
-      scroll-snap-type: x mandatory; /* Snap logic */
-      gap: 20px;
-      justify-content: flex-start;
-
-      /* PADDING: 15% Left/Right + 70% Card = 100% 
-             This centers the active card */
-      padding: 40px 15%;
-
-      -ms-overflow-style: none; /* Hide Scrollbar IE */
-      scrollbar-width: none; /* Hide Scrollbar Firefox */
-    }
-    .mainBox2 .cards::-webkit-scrollbar {
-      display: none; /* Hide Scrollbar Chrome */
-    }
-
-    /* Card Sizing */
-    .card {
-      min-width: 75%;
-      scroll-snap-align: center;
-      /* Disable hover transform on touch to prevent glitching */
-      transform: none !important;
-    }
-
-    .card button {
-      width: 60%;
+      padding: 30px 10px;
     }
   }
 }
@@ -2402,7 +2270,7 @@ body {
   }
 
   /* --- INDIVIDUAL CARD STYLING --- */
-  .cards {
+  .testimonial-card {
     flex: 1;
     min-width: 300px;
     display: flex;
@@ -2485,39 +2353,29 @@ body {
     }
   }
 
-  /* --- HOVER STATE --- */
-  .cards:hover {
-    background-color: #ffffff; /* Card turns White */
+  /* --- ACTIVE STATE (Controlled by JS & Hover) --- */
+  /* Applies if the user hovers OR if JS adds the 'active-card' class */
+  .testimonial-card.active-card,
+  .testimonial-card:hover {
+    background-color: #ffffff; /* Turns White */
     transform: scale(1.02);
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
 
-    /* FIX: We target the specific nested containers (.box-item1, etc.)
-       This ensures these rules are "stronger" than the default rules.
-    */
-
-    .box-item1 {
-      img {
-        filter: brightness(0); /* Icon turns Black */
-      }
-
-      .text {
-        color: #212529; /* Text turns Black */
-      }
-
-      .horizontal-line {
-        background-color: #212529; /* Line turns Black */
-      }
+    /* Turn Quote Icon Black */
+    .box-item1 img {
+      filter: brightness(0);
     }
 
-    .box-item2 {
-      .inner-item {
-        .name {
-          color: #212529; /* Name turns Black */
-        }
-        .name-description {
-          color: #212529; /* Description turns Black */
-        }
-      }
+    /* Turn Text Black */
+    .box-item1 .text,
+    .box-item2 .inner-item .name,
+    .box-item2 .inner-item .name-description {
+      color: #212529;
+    }
+
+    /* Turn Line Black */
+    .box-item1 .horizontal-line {
+      background-color: #212529;
     }
   }
 
@@ -2543,6 +2401,9 @@ body {
      RESPONSIVE: Tablet (Max 1152px)
      ========================================= */
   @media screen and (max-width: 1152px) {
+    .container10 {
+      overflow-x: hidden !important;
+    }
     padding: 100px 20px;
 
     .container10-item1 h1 {
@@ -2565,7 +2426,7 @@ body {
       display: none;
     }
 
-    .cards {
+    .testimonial-card {
       min-width: 70%;
       max-width: 70%;
       scroll-snap-align: center;
@@ -2574,16 +2435,16 @@ body {
   }
 
   @media screen and (max-width: 390px) {
-    .cards .box-item2 {
+    .testimonial-card .box-item2 {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 15px;
     }
-    .cards .box-item2 .inner-item .name {
+    .testimonial-card .box-item2 .inner-item .name {
       font-size: 18px;
     }
-    .cards .box-item2 .inner-item {
+    .testimonial-card .box-item2 .inner-item {
       display: flex;
       flex-direction: column;
       gap: 15px;
@@ -2605,27 +2466,27 @@ body {
       gap: 20px;
     }
     .highlight-design {
-          position: relative; /* Anchors the image to this word */
-          display: inline-block; /* Ensures the width matches the word */
-          z-index: 1; /* Ensures text sits ON TOP of the image */
+      position: relative; /* Anchors the image to this word */
+      display: inline-block; /* Ensures the width matches the word */
+      z-index: 1; /* Ensures text sits ON TOP of the image */
 
-          &::after {
-            content: "";
-            position: absolute;
-            left: 5% !important;
-            width: 80% !important; /* Stretches the image across the whole word */
+      &::after {
+        content: "";
+        position: absolute;
+        left: 5% !important;
+        width: 80% !important; /* Stretches the image across the whole word */
 
-            /* ADJUST THIS HEIGHT to match your image's thickness */
-            height: 25px !important;
+        /* ADJUST THIS HEIGHT to match your image's thickness */
+        height: 25px !important;
 
-            /* ADJUST THIS BOTTOM value to move the image up/down */
-            bottom: -12px;
+        /* ADJUST THIS BOTTOM value to move the image up/down */
+        bottom: -12px;
 
-            /* Replace with your specific file path */
-            background-image: url("./images/sponsors-design.svg");  
-          }
-        }
-    .cards {
+        /* Replace with your specific file path */
+        background-image: url("./images/sponsors-design.svg");
+      }
+    }
+    .testimonial-card {
       min-width: 100%;
       max-width: 100%;
       scroll-snap-align: center;
